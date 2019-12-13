@@ -7,6 +7,17 @@ p {
     background: local;
 }
 
+#wagerBox {
+    background-color: rgb(86, 185, 124);
+    width: 60%;
+    margin: 5px;
+    padding: 15px;
+    margin-left: 2%;
+    text-align: left;
+    line-height: 20px;
+    font-size: 16px;
+}
+
 #roundResult {
     background: white;
     padding: 3%;
