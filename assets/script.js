@@ -12,6 +12,14 @@ function newDeck(){
     })
 };
 
+var p1stack = "";
+var p2stack = "";
+var dealHalfUrlp1 = "https://deckofcardsapi.com/api/deck/p1stack/draw/?count=26"
+function firstDeal(){
+    $.get(dealHalfUrlp1).then(function(response){
+        console.log(response);
+    })
+}
 
 
 
