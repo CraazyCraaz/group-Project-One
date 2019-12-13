@@ -1,7 +1,9 @@
 /* JUST CHECKING TO SEE IF CONNECTED */
 * {
-    background: grey;
+    background: lightgray;
 }
+
+
 
 p {
     background: local;
@@ -42,3 +44,15 @@ p {
     font-size: 14px;
   }
 
+  .page-footer {
+      position: fixed;
+      width: 100%;
+      align-items: left;
+      background: rgb(83, 83, 83);
+  }
+
+#footerText {
+      width: 100%;
+      height: 40px;
+      background: rgb(83, 83, 83);
+  }
