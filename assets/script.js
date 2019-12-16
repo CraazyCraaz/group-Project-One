@@ -53,7 +53,7 @@ function playACard() {
             localStorage.setItem("p2Card", response.cards[0].code);
             localStorage.setItem("p2ImgUrl", response.cards[0].image);
             $("#CpuCard").attr("src", localStorage.getItem("p2ImgUrl"));
-            // $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/pot/add/?cards=" + response.cards[0].code);
+            // $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/pot/add/?cards=" + response.cards);
 
             compare();
         })
@@ -115,19 +115,22 @@ function compare() {
         // runoff();
     }
 }
-function runoff(){
-    $.get("https://deckofcardsapi.com/api/deck/" + localStorage.getItem("mainDeck") + "/pile/p1/list/").then(function (response) {
-    var p1DeckSize = response.piles.P1.remaining
-    var p2DeckSize = response.piles.P2.remaining
-    // console.log(p1DeckSize + " p1 cards remain");
-    // console.log(p2DeckSize + " p2 cards remain");
-    // if(p1DeckSize > 1 && p2DeckSize > 1){
-
-    // }
+// function runoff(){
+//     $.get("https://deckofcardsapi.com/api/deck/" + localStorage.getItem("mainDeck") + "/pile/p1/list/").then(function (response) {
+//     var p1DeckSize = response.piles.P1.remaining;
+//     var p2DeckSize = response.piles.P2.remaining;
+//     var potSize = response.piles.pot.remaining;
+//     console.log(p1DeckSize + " p1 cards remain");
+//     console.log(p2DeckSize + " p2 cards remain");
+//     console.log(potSize + " cards in pot");
     
-    })
+//     if(p1DeckSize > 1 && p2DeckSize > 1){
 
-}
+//     }
+    
+//     })
+
+// }
 
     
 
