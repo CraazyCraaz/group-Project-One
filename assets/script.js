@@ -131,24 +131,21 @@ $("#playCard").on("click", function () {
 //  * DRINK API
 //  ****************************************************************
 
-// BASED ON A TEXTARE FOR DRINK NAME AND "RANDOM" BUTTON
-
-var drinkChoice = "";
-var drinkURL = "";
-var randomDrinkURL = "";
-
-
 /**********************************
  * Search drink by name
  **********************************/
+var drinkChoice = "";
+var drinkURL = "";
+
 function drinkInfo() {
     $.ajax({
         url: drinkURL,
         method: "GET"
     }).then(function (response) {
-
+        
         var drinkName = $("<h2>").append(response.drinks[0].strDrink);
         var drinkImg = $("<img>").attr("src", response.drinks[0].strDrinkThumb);
+        drinkImg.width(150);
         var drinkIngredients = "";
         var measure = "";
         $("#drinkDisplay").empty();
@@ -159,23 +156,24 @@ function drinkInfo() {
                 $("#drinkDisplay").append(drinkIngredients)
             }
         }
-
+        
         for (let j = 1; j < 15; j++) {
             if (response.drinks[0]["strMeasure" + j] != null) {
                 measure = $("<p>").append(response.drinks[0]["strMeasure" + j]);
                 $("#drinkDisplay").append(measure);
-
+                
             }
         }
     });
 }
+
 // Event handler for user clicking the searchDrink button
 $("#searchDrink").on("click", function (event) {
     // event.preventDefault(); ONLY USEFUL FOR FORM TAG / SUBMIT BUTTON
     drinkChoice = $("#drinkChoice").val()
     drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + drinkChoice;
-
-
+    
+    
     drinkInfo();
 });
 
@@ -183,6 +181,7 @@ $("#searchDrink").on("click", function (event) {
 /**********************************
  * Random Drink
  **********************************/
+var randomDrinkURL = "";
 function randomDrinkInfo() {
     $.ajax({
         url: randomDrinkURL,
@@ -191,6 +190,7 @@ function randomDrinkInfo() {
 
         var drinkName = $("<h2>").append(response.drinks[0].strDrink);
         var drinkImg = $("<img>").attr("src", response.drinks[0].strDrinkThumb);
+        drinkImg.width(150);
         var drinkIngredients = "";
         var measure = "";
         $("#drinkDisplay").empty();
@@ -213,7 +213,9 @@ function randomDrinkInfo() {
 }
 
 $("#randomDrink").on("click", function (event) {
-    var randomDrinkURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+    var drinkArray = ["margarita", "long island iced tea", "a1",]
+    var randomDrinkArray = drinkArray[Math.floor(Math.random() * drinkArray.length)];
+    var randomDrinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + randomDrinkArray;
 
     randomDrinkInfo();
 });
