@@ -6,7 +6,7 @@ function newDeck() {
 
     $.get(newDeckUrl).then(function (response) {
         console.log(response);
-        localStorage.setItem("mainDeck" , response.deck_id)
+        localStorage.setItem("mainDeck", response.deck_id)
     });
 };
 
@@ -14,10 +14,10 @@ function firstDeal() {
     var deck = localStorage.getItem("mainDeck");
     var dealHalfUrlp1 = "https://deckofcardsapi.com/api/deck/" + deck + "/draw/?count=26"
     var dealHalfUrlp2 = "https://deckofcardsapi.com/api/deck/" + deck + "/draw/?count=26"
-    
+
     $.get(dealHalfUrlp1).then(function (response) {
         console.log(response);
-        for(var i = 0; i < 26; i++){
+        for (var i = 0; i < 26; i++) {
             var temp = response.cards[i].code
             $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P1/add/?cards=" + temp);
         }
@@ -25,7 +25,7 @@ function firstDeal() {
 
     $.get(dealHalfUrlp2).then(function (response) {
         console.log(response);
-        for(var i = 0; i < 26; i++){
+        for (var i = 0; i < 26; i++) {
             var temp = response.cards[i].code
             $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P2/add/?cards=" + temp);
         }
@@ -39,20 +39,83 @@ function shuffle() {
     $.get(shuffleUrl);
 }
 
+
 function playACard() {
     var deck = localStorage.getItem("mainDeck")
-    $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P1/draw/?count=1").then(function (response){
+
+    $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P1/draw/?count=1").then(function (response) {
         localStorage.setItem("p1Card", response.cards[0].code)
         localStorage.setItem("p1ImgUrl", response.cards[0].image)
-        // console.log(response.cards[0].code + "response");
-        // console.log(localStorage.getItem("p1Card")[0] + "from storage");
-        $("#userCard").attr("src",localStorage.getItem("p1ImgUrl"))
-    })
-    $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P2/draw/?count=1").then(function (response){
-        localStorage.setItem("p2Card", response.cards[0].code)
-        console.log(response.cards[0].code);
+        $("#userCard").attr("src", localStorage.getItem("p1ImgUrl"))
+
+        $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P2/draw/?count=1").then(function (response) {
+            localStorage.setItem("p2Card", response.cards[0].code);
+            localStorage.setItem("p2ImgUrl", response.cards[0].image);
+            $("#CpuCard").attr("src", localStorage.getItem("p2ImgUrl"));
+
+            compare();
+        })
     })
 }
+function compare() {
+    var p1Rank = localStorage.getItem("p1Card").split("");
+    console.log(p1Rank[0] + " p1rank");
+    if (p1Rank[0] === "0") {
+        p1Rank[0] = 10
+        console.log(p1Rank + " fix");
+    }
+    if (p1Rank[0] === "J") {
+        p1Rank[0] = 11
+        console.log(p1Rank + " fix");
+    }
+    if (p1Rank[0] === "Q") {
+        p1Rank[0] = 12
+        console.log(p1Rank + " fix");
+    }
+    if (p1Rank[0] === "K") {
+        p1Rank[0] = 13
+        console.log(p1Rank + " fix");
+    }
+    if (p1Rank[0] === "A") {
+        p1Rank[0] = 14
+        console.log(p1Rank + " fix");
+    }
+    var p2Rank = localStorage.getItem("p2Card").split("");
+    console.log(p2Rank[0] + " p2rank");
+    if (p2Rank[0] === "0") {
+        p2Rank[0] = 10
+        console.log(p2Rank + " fix");
+    }
+    if (p2Rank[0] === "J") {
+        p2Rank[0] = 11
+        console.log(p2Rank + " fix");
+    }
+    if (p2Rank[0] === "Q") {
+        p2Rank[0] = 12
+        console.log(p2Rank + " fix");
+    }
+    if (p2Rank[0] === "K") {
+        p2Rank[0] = 13
+        console.log(p2Rank + " fix");
+    }
+    if (p2Rank[0] === "A") {
+        p2Rank[0] = 14
+        console.log(p2Rank + " fix");
+    }
+    if (p2Rank[0] > p1Rank[0]) {
+        console.log("p2wins");
+    }
+    if (p1Rank[0] > p2Rank[0]) {
+        console.log("p1wins");
+    }
+    if (p1Rank[0] === p2Rank[0]) {
+        console.log("RUNOFF!");
+
+    }
+}
+
+
+
 
 $("#deal").on("click", function () {
     firstDeal();
@@ -97,7 +160,7 @@ function drinkInfo() {
         $("#drinkDisplay").append(drinkName, drinkImg)
         for (let i = 1; i < 15; i++) {
             if (response.drinks[0]["strIngredient" + i] != null) {
-                drinkIngredients = $("<p>").append(response.drinks[0]["strIngredient" + i]);
+                drinkIngredients = $("<li>").append(response.drinks[0]["strIngredient" + i]);
                 $("#drinkDisplay").append(drinkIngredients)
             }
         }
@@ -142,7 +205,7 @@ function randomDrinkInfo() {
         $("#drinkDisplay").append(drinkName, drinkImg)
         for (let i = 1; i < 15; i++) {
             if (response.drinks[0]["strIngredient" + i] != null) {
-                drinkIngredients = $("<p>").append(response.drinks[0]["strIngredient" + i]);
+                drinkIngredients = $("<li>").append(response.drinks[0]["strIngredient" + i]);
                 $("#drinkDisplay").append(drinkIngredients)
             }
         }
@@ -158,16 +221,19 @@ function randomDrinkInfo() {
 }
 
 $("#randomDrink").on("click", function (event) {
-    var drinkArray = ["margarita", "long island iced tea", "a1",]
+
+    var drinkArray = ["margarita", "long island iced tea", "a1", "dragonfly", "imperial fizz", "mojito", "bloody mary", "royal bitch", "artic mouthwash"]
     var randomDrinkArray = drinkArray[Math.floor(Math.random() * drinkArray.length)];
-    var randomDrinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + randomDrinkArray;
+    randomDrinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + randomDrinkArray;
+
 
     randomDrinkInfo();
 });
 
 // MODAL EVENT LISTENER
-  $(document).ready(function(){
+$(document).ready(function () {
     $('.modal').modal();
+
   });
 
   //start new game
@@ -180,3 +246,5 @@ $("#randomDrink").on("click", function (event) {
     trigger: 'manual'
   });
   $("#card").flip('toggle');
+
+});
