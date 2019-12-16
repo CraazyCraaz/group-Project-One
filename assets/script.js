@@ -4,39 +4,57 @@
 
 function newDeck() {
     var newDeckUrl = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
+
     $.get(newDeckUrl).then(function (response) {
         console.log(response);
-        var mainDeck = response.deck_id;
-        console.log(mainDeck);
-        var shuffleUrl = "https://deckofcardsapi.com/api/deck/" + mainDeck + "/shuffle/"
-
-        var p1stack = "";
-        var p2stack = "";
-        var dealHalfUrlp1 = "https://deckofcardsapi.com/api/deck/" + mainDeck + "/draw/?count=26"
-
-        function firstDeal() {
-            $.get(dealHalfUrlp1).then(function (response) {
-                console.log(response);
-            })
-        }
-
-        function shuffle() {
-            $.get(shuffleUrl).then(function (response) {
-                console.log(response);
-            });
-        }
-
-        $("#deal").on("click", function () {
-            firstDeal();
-        });
-        $("#shuffle").on("click", function () {
-            shuffle();
-        });
+        localStorage.setItem("mainDeck" , response.deck_id)
     });
 };
+
+function firstDeal() {
+    var deck = localStorage.getItem("mainDeck");
+    var dealHalfUrlp1 = "https://deckofcardsapi.com/api/deck/" + deck + "/draw/?count=26"
+    var dealHalfUrlp2 = "https://deckofcardsapi.com/api/deck/" + deck + "/draw/?count=26"
+    
+    $.get(dealHalfUrlp1).then(function (response) {
+        console.log(response);
+        for(var i = 0; i < 26; i++){
+            var temp = response.cards[i].code
+            $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P1/add/?cards=" + temp);
+        }
+    })
+
+    $.get(dealHalfUrlp2).then(function (response) {
+        console.log(response);
+        for(var i = 0; i < 26; i++){
+            var temp = response.cards[i].code
+            $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P2/add/?cards=" + temp);
+        }
+    })
+}
+
+function shuffle() {
+    var deck = localStorage.getItem("mainDeck");
+    var shuffleUrl = "https://deckofcardsapi.com/api/deck/" + deck + "/shuffle/"
+    console.log("shuffled");
+    $.get(shuffleUrl);
+}
+
+$("#deal").on("click", function () {
+    firstDeal();
+});
+
+$("#shuffle").on("click", function () {
+    shuffle();
+});
+
 $("#newDeck").on("click", function () {
     newDeck();
 });
+
+// $(#"playCard").on("click", function () {
+
+// })
 
 
 
