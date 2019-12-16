@@ -97,7 +97,7 @@ function drinkInfo() {
         $("#drinkDisplay").append(drinkName, drinkImg)
         for (let i = 1; i < 15; i++) {
             if (response.drinks[0]["strIngredient" + i] != null) {
-                drinkIngredients = $("<p>").append(response.drinks[0]["strIngredient" + i]);
+                drinkIngredients = $("<li>").append(response.drinks[0]["strIngredient" + i]);
                 $("#drinkDisplay").append(drinkIngredients)
             }
         }
