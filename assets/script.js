@@ -59,7 +59,6 @@ function playACard() {
 }
 function compare() {
     var p1Rank = localStorage.getItem("p1Card").split("");
-    // var temp = p1Rank.split("");
     console.log(p1Rank[0] + " p1rank");
     if(p1Rank[0] === "0"){
         p1Rank[0] = 10
@@ -82,7 +81,6 @@ function compare() {
         console.log(p1Rank + " fix");   
     }
     var p2Rank = localStorage.getItem("p2Card").split("");
-    // var temp = p1Rank.split("");
     console.log(p2Rank[0] + " p2rank");
     if(p2Rank[0] === "0"){
         p2Rank[0] = 10
@@ -103,6 +101,16 @@ function compare() {
     if(p2Rank[0] === "A"){
         p2Rank[0] = 14
         console.log(p2Rank + " fix");   
+    }
+    if(p2Rank[0] > p1Rank[0]){
+        console.log("p2wins");        
+    }
+    if(p1Rank[0] > p2Rank[0]){
+        console.log("p1wins");
+    }
+    if(p1Rank[0] === p2Rank[0]){
+        console.log("RUNOFF!");
+        
     }
 }
 
