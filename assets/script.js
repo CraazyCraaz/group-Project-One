@@ -47,11 +47,13 @@ function playACard() {
         localStorage.setItem("p1Card", response.cards[0].code)
         localStorage.setItem("p1ImgUrl", response.cards[0].image)
         $("#userCard").attr("src", localStorage.getItem("p1ImgUrl"))
+        // $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/pot/add/?cards=" + response.cards[0].code);
 
         $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P2/draw/?count=1").then(function (response) {
             localStorage.setItem("p2Card", response.cards[0].code);
             localStorage.setItem("p2ImgUrl", response.cards[0].image);
             $("#CpuCard").attr("src", localStorage.getItem("p2ImgUrl"));
+            // $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/pot/add/?cards=" + response.cards[0].code);
 
             compare();
         })
@@ -110,10 +112,24 @@ function compare() {
     }
     if (p1Rank[0] === p2Rank[0]) {
         console.log("RUNOFF!");
-
+        // runoff();
     }
 }
+function runoff(){
+    $.get("https://deckofcardsapi.com/api/deck/" + localStorage.getItem("mainDeck") + "/pile/p1/list/").then(function (response) {
+    var p1DeckSize = response.piles.P1.remaining
+    var p2DeckSize = response.piles.P2.remaining
+    // console.log(p1DeckSize + " p1 cards remain");
+    // console.log(p2DeckSize + " p2 cards remain");
+    // if(p1DeckSize > 1 && p2DeckSize > 1){
 
+    // }
+    
+    })
+
+}
+
+    
 
 
 
@@ -150,7 +166,7 @@ function drinkInfo() {
         url: drinkURL,
         method: "GET"
     }).then(function (response) {
-
+        
         var drinkName = $("<h2>").append(response.drinks[0].strDrink);
         var drinkImg = $("<img>").attr("src", response.drinks[0].strDrinkThumb);
         drinkImg.width(150);
@@ -164,12 +180,12 @@ function drinkInfo() {
                 $("#drinkDisplay").append(drinkIngredients)
             }
         }
-
+        
         for (let j = 1; j < 15; j++) {
             if (response.drinks[0]["strMeasure" + j] != null) {
                 measure = $("<p>").append(response.drinks[0]["strMeasure" + j]);
                 $("#drinkDisplay").append(measure);
-
+                
             }
         }
     });
@@ -180,8 +196,8 @@ $("#searchDrink").on("click", function (event) {
     // event.preventDefault(); ONLY USEFUL FOR FORM TAG / SUBMIT BUTTON
     drinkChoice = $("#drinkChoice").val()
     drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + drinkChoice;
-
-
+    
+    
     drinkInfo();
 });
 
@@ -221,9 +237,11 @@ function randomDrinkInfo() {
 }
 
 $("#randomDrink").on("click", function (event) {
+
     var drinkArray = ["margarita", "long island iced tea", "a1", "dragonfly", "imperial fizz", "mojito", "bloody mary", "royal bitch", "artic mouthwash"]
     var randomDrinkArray = drinkArray[Math.floor(Math.random() * drinkArray.length)];
     randomDrinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + randomDrinkArray;
+
 
     randomDrinkInfo();
 });
@@ -231,4 +249,18 @@ $("#randomDrink").on("click", function (event) {
 // MODAL EVENT LISTENER
 $(document).ready(function () {
     $('.modal').modal();
+
+  });
+
+  //start new game
+  $("#newGame").on("click", function () {
+    $("#mainContain").css("display", "block");
+  });
+
+  //js to flip the cards
+  $("#card").flip({
+    trigger: 'manual'
+  });
+  $("#card").flip('toggle');
+
 });
