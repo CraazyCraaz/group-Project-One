@@ -19,7 +19,7 @@
 
     <nav>
         <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">The Casino Experience</a>
+            <a class="brand-logo"> The Casino Experience</a>
             <ul class="right hide-on-med-and-down">
                 <!-- Modal Trigger -->
                 <li><button data-target="modal1" class="btn modal-trigger">Instructions</button></li>
@@ -59,16 +59,6 @@
     <!-- flexbox for the cards to 1) display the deck, 2) the round and the 3) result -->
     <div class="flex-container">
         <div class="box">Cardbox1
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                  <div class="flip-card-front">
-                    <img src="assets/cardback.jpg" alt="card back" style="width:90px;height:120px;">
-                  </div>
-                  <div class="flip-card-back">
-                    <p>test code </p>
-                  </div>
-                </div>
-              </div>
             <p>CPU Card</p>
             <img animated flipOutY src="assets/cardback.jpg" alt="card back" height="120" width="90">
             <br>
@@ -85,9 +75,32 @@
         </div>
         <div class="box">This Round
             <p>CPU's card</p>
-            <img src="assets/queenofspades.png" alt="Smiley face" height="120" width="90">
+            <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                <div id="card">
+                    <div class="front">
+                        <!-- front content -->
+                        <img src="assets/cardback.jpg" alt="Smiley face" height="120" width="90">
+                    </div>
+                    <div class="back">
+                        <!-- back content -->
+                        <img src="assets/queenofspades.png" alt="Smiley face" height="120" width="90" id="userCard">
+                    </div>
+                </div>
+            </div>
+
             <p>User card</p>
-            <img src="assets/queenofspades.png" alt="Smiley face" height="120" width="90" id = "userCard">
+            <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                <div class="flipper">
+                    <div class="front">
+                        <!-- front content -->
+                        <img src="assets/cardback.jpg" alt="Smiley face" height="120" width="90">
+                    </div>
+                    <div class="back">
+                        <!-- back content -->
+                        <img src="assets/queenofspades.png" alt="Smiley face" height="120" width="90" id="userCard">
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="box">Round Result
             <br><br><br><br>

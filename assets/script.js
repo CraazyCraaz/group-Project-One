@@ -167,3 +167,7 @@ $("#randomDrink").on("click", function (event) {
   $(document).ready(function(){
     $('.modal').modal();
   });
+
+  //js to flip the cards
+  addEventListener()
+  document.querySelector("#myCard").classList.toggle("flip");
