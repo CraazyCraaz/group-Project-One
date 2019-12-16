@@ -36,7 +36,7 @@ function shuffle() {
     var deck = localStorage.getItem("mainDeck");
     var shuffleUrl = "https://deckofcardsapi.com/api/deck/" + deck + "/shuffle/"
     console.log("shuffled");
-    $.get(shuffleUrl);
+    $.get(shuffleUrl); 
 }
 
 
