@@ -38,7 +38,7 @@
                 </div>
                 <!-- <li><a href="sass.html" class="waves-effect waves-light btn">Instructions</a></li> -->
                 <!--<a class="waves-effect waves-light btn">button</a>-->
-                <li><a href="badges.html" class="waves-effect waves-light btn">New Game</a></li>
+                <li><a id ="newGame" class="waves-effect waves-light btn">New Game</a></li>
             </ul>
         </div>
     </nav>
@@ -46,84 +46,83 @@
 </head>
 
 <body>
-
-    <br>
-    <div id="wagerWrapper">
-        <div id="wagerBox">
-            <a class="waves-effect waves-light btn">Increase Wager $5</a>
-            <a class="waves-effect waves-light btn">Decrease Wager $5</a>
-            <br>
-            <p>Current Wager:</p>
+    <div id = "mainContain">
+        <div id="wagerWrapper">
+            <div id="wagerBox">
+                <a class="waves-effect waves-light btn">Increase Wager $5</a>
+                <a class="waves-effect waves-light btn">Decrease Wager $5</a>
+                <br>
+                <p>Current Wager:</p>
+            </div>
         </div>
-    </div>
-    <!-- flexbox for the cards to 1) display the deck, 2) the round and the 3) result -->
-    <div class="flex-container">
-        <div class="box">Cardbox1
-            <p>CPU Card</p>
-            <img animated flipOutY src="assets/cardback.jpg" alt="card back" height="120" width="90">
-            <br>
-            <p>User Card</p>
-            <img src="assets/cardback.jpg" alt="Smiley face" height="120" width="90">
-            <br>
-            <a id="newDeck" class="waves-effect waves-light btn-small">New Deck</a>
-            <br><br>
-            <a id="shuffle" class="waves-effect waves-light btn-small">Shuffle</a>
-            <br><br>
-            <a id="deal" class="waves-effect waves-light btn-small">Deal!</a>
-            <br><br>
-            <a id="playCard" class="waves-effect waves-light btn-small">Play a Card</a>
-        </div>
-        <div class="box">This Round
-            <p>CPU's card</p>
-            <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                <div id="card">
-                    <div class="front">
-                        <!-- front content -->
-                        <img src="assets/cardback.jpg" alt="Smiley face" height="120" width="90">
+        <!-- flexbox for the cards to 1) display the deck, 2) the round and the 3) result -->
+        <div class="flex-container">
+            <div class="box">Cardbox1
+                <p>CPU Card</p>
+                <img animated flipOutY src="assets/cardback.jpg" alt="card back" height="120" width="90">
+                <br>
+                <p>User Card</p>
+                <img src="assets/cardback.jpg" alt="Smiley face" height="120" width="90">
+                <br>
+                <a id="newDeck" class="waves-effect waves-light btn-small">New Deck</a>
+                <br><br>
+                <a id="shuffle" class="waves-effect waves-light btn-small">Shuffle</a>
+                <br><br>
+                <a id="deal" class="waves-effect waves-light btn-small">Deal!</a>
+                <br><br>
+                <a id="playCard" class="waves-effect waves-light btn-small">Play a Card</a>
+            </div>
+            <div class="box">This Round
+                <p>CPU's card</p>
+                <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                    <div id="card">
+                        <div class="front">
+                            <!-- front content -->
+                            <img src="assets/cardback.jpg" alt="Smiley face" height="120" width="90">
+                        </div>
+                        <div class="back">
+                            <!-- back content -->
+                            <img src="assets/queenofspades.png" alt="Smiley face" height="120" width="90" id="userCard">
+                        </div>
                     </div>
-                    <div class="back">
-                        <!-- back content -->
-                        <img src="assets/queenofspades.png" alt="Smiley face" height="120" width="90" id="userCard">
+                </div>
+
+                <p>User card</p>
+                <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                    <div class="flipper">
+                        <div class="front">
+                            <!-- front content -->
+                            <img src="assets/cardback.jpg" alt="Smiley face" height="120" width="90">
+                        </div>
+                        <div class="back">
+                            <!-- back content -->
+                            <img src="assets/queenofspades.png" alt="Smiley face" height="120" width="90" id="userCard">
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <p>User card</p>
-            <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                <div class="flipper">
-                    <div class="front">
-                        <!-- front content -->
-                        <img src="assets/cardback.jpg" alt="Smiley face" height="120" width="90">
-                    </div>
-                    <div class="back">
-                        <!-- back content -->
-                        <img src="assets/queenofspades.png" alt="Smiley face" height="120" width="90" id="userCard">
-                    </div>
+            <div class="box">Round Result
+                <br><br><br><br>
+                <div id="roundResult">
+                    <p>Who won?</p>
                 </div>
             </div>
-        </div>
-        <div class="box">Round Result
-            <br><br><br><br>
-            <div id="roundResult">
-                <p>Who won?</p>
-            </div>
-        </div>
 
 
-        <div id="drinkDiv" class="box">Need a drink?
+            <div id="drinkDiv" class="box">Need a drink?
 
-            <textarea id="drinkChoice"></textarea>
+                <textarea id="drinkChoice"></textarea>
 
-            <button type="button" class="btn btn-default" id="searchDrink">Search</button>
-            <button type="button" class="btn btn-default" id="randomDrink">random</button>
+                <button type="button" class="btn btn-default" id="searchDrink">Search</button>
+                <button type="button" class="btn btn-default" id="randomDrink">Feelin' Lucky</button>
 
-            <div id="drinkDisplay">
+                <div id="drinkDisplay" class="white-text"></div>
 
             </div>
 
         </div>
-
     </div>
+
 
 
     <footer class="page-footer">
@@ -136,6 +135,8 @@
         </div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./assets/script.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>

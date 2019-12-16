@@ -3,7 +3,9 @@
     background: black;
 }
 
-
+#wagerWrapper {
+    /* display: none; */
+}
 
 p {
     background: local;
@@ -31,6 +33,10 @@ p {
     margin-left: 5%;
     width: 80%;
     border-radius: 25px;
+}
+
+#mainContain {
+    display: none;
 }
 
 .flex-container {
