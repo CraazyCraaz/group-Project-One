@@ -39,20 +39,83 @@ function shuffle() {
     $.get(shuffleUrl);
 }
 
+
 function playACard() {
     var deck = localStorage.getItem("mainDeck")
+    
     $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P1/draw/?count=1").then(function (response){
         localStorage.setItem("p1Card", response.cards[0].code)
         localStorage.setItem("p1ImgUrl", response.cards[0].image)
-        // console.log(response.cards[0].code + "response");
-        // console.log(localStorage.getItem("p1Card")[0] + "from storage");
         $("#userCard").attr("src",localStorage.getItem("p1ImgUrl"))
-    })
-    $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P2/draw/?count=1").then(function (response){
-        localStorage.setItem("p2Card", response.cards[0].code)
-        console.log(response.cards[0].code);
+
+        $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P2/draw/?count=1").then(function (response){
+            localStorage.setItem("p2Card", response.cards[0].code);
+            localStorage.setItem("p2ImgUrl", response.cards[0].image);
+            $("#CpuCard").attr("src", localStorage.getItem("p2ImgUrl"));
+            
+            compare();
+        })
     })
 }
+function compare() {
+    var p1Rank = localStorage.getItem("p1Card").split("");
+    console.log(p1Rank[0] + " p1rank");
+    if(p1Rank[0] === "0"){
+        p1Rank[0] = 10
+        console.log(p1Rank + " fix");   
+    }
+    if(p1Rank[0] === "J"){
+        p1Rank[0] = 11
+        console.log(p1Rank + " fix");   
+    }
+    if(p1Rank[0] === "Q"){
+        p1Rank[0] = 12
+        console.log(p1Rank + " fix");   
+    }
+    if(p1Rank[0] === "K"){
+        p1Rank[0] = 13
+        console.log(p1Rank + " fix");   
+    }
+    if(p1Rank[0] === "A"){
+        p1Rank[0] = 14
+        console.log(p1Rank + " fix");   
+    }
+    var p2Rank = localStorage.getItem("p2Card").split("");
+    console.log(p2Rank[0] + " p2rank");
+    if(p2Rank[0] === "0"){
+        p2Rank[0] = 10
+        console.log(p2Rank + " fix");   
+    }
+    if(p2Rank[0] === "J"){
+        p2Rank[0] = 11
+        console.log(p2Rank + " fix");   
+    }
+    if(p2Rank[0] === "Q"){
+        p2Rank[0] = 12
+        console.log(p2Rank + " fix");   
+    }
+    if(p2Rank[0] === "K"){
+        p2Rank[0] = 13
+        console.log(p2Rank + " fix");   
+    }
+    if(p2Rank[0] === "A"){
+        p2Rank[0] = 14
+        console.log(p2Rank + " fix");   
+    }
+    if(p2Rank[0] > p1Rank[0]){
+        console.log("p2wins");        
+    }
+    if(p1Rank[0] > p2Rank[0]){
+        console.log("p1wins");
+    }
+    if(p1Rank[0] === p2Rank[0]){
+        console.log("RUNOFF!");
+        
+    }
+}
+
+
+    
 
 $("#deal").on("click", function () {
     firstDeal();
