@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/style.css">
     <title>Casino Experience</title>
-
     <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
     <li><a href="#!">one</a></li>
@@ -33,11 +31,8 @@
       </ul>
     </div>
   </nav>
-
 </head>
-
 <body>
-
     <br>
     <div id="wagerBox">
         <a class="waves-effect waves-light btn">Increase Wager $5</a>
@@ -54,24 +49,122 @@
             <p>User Card</p>
             <img src="assets/cardback.jpg" alt="Smiley face" height="120" width="90">
             <br>
-            <a id="nextCard" class="waves-effect waves-light btn-small">Deal!</a>
-        </div>
+            <a id="newDeck" class="waves-effect waves-light btn-small">New Deck</a>
+            <br><br>
+            <a id="shuffle" class="waves-effect waves-light btn-small">Shuffle</a>
+            <br><br>
+            <a id="deal" class="waves-effect waves-light btn-small">Deal!</a>
+            <br><br>
+            <a id="unused2" class="waves-effect waves-light btn-small">unused</a>        </div>
         <div class="box">This Round
-        <p>CPU's card</p>
-        <img src="assets/queenofspades.png" alt="Smiley face" height="120" width="90">
-        <p>User card</p>
-        <img src="assets/queenofspades.png" alt="Smiley face" height="120" width="90">
-    </div>
+            <p>CPU's card</p>
+            <img src="assets/queenofspades.png" alt="Smiley face" height="120" width="90">
+            <p>User card</p>
+            <img src="assets/queenofspades.png" alt="Smiley face" height="120" width="90">
+        </div>
         <div class="box">Round Result
-        <br><br><br><br>
-        <div id = "roundResult">
-            <p>Who won?</p>
+            <br><br><br><br>
+            <div id="roundResult">
+                <p>Who won?</p>
+            </div>
         </div>
     </div>
 
 
+    <div class="container">
+            <div class="box">
+                <div class ="drink horizontal">
+                  <div class="col s12 m5">
+                       <div class="ard-panel orange">
+                      <div class="drink-image" height=auto; width=50px;>
+                            <img class="materialboxed" data-caption="A picture of a way with a group of trees in a park" width="250"
+                              src="#">
+                          </div>
+                            <div class="drink-input">
+                              <div class="card-content" class ="input-field col s6">
+                                <label for ="Order"></label>                        
+                              <p><!--Inputbox here--> </p>                      
+                              <div class="card-action">
+                                <a href="#">Link</a>
+                       
+              <div class= "drinkbox">Drink Modal
+                           <p>Cheers!</p>
+                            <!--WANNA ORDER A DRINK TO PULL DOWN TO BE BEVMODEL-->
+                            <!--DRINK INPUT BOX FOR USER INPUT -->
+                          <div class = "drink result">
+                              Cocktail Result
+                              <br><br>
+                              <div id = "drink result">                        
+                          <br>
+                            <a  class="server-button" class="waves-effect waves-light btn" button type="button">Sent to Server</a></button> <br>
+                            <a class="lucky-button" class="waves-effect waves-light btn" button type="button">I'm feeling lucky!</a></button> <br>
+                            
+                           <!--<div class="modal-footer">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                          </div>-->
+
+                          /* fallback */
+                          <style>
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2');
+  }
+  
+  .material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga'; 
+    -webkit-font-smoothing: antialiased; 
+  }
+
+  #drinkResult{
+    background: white;
+    padding: 5%;
+    margin-right: 7%;
+    width: 80%;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: grey;
+  }
+  
+  .flex-container .box {
+    background-color: rgb(185, 175, 86);
+    width: 20%;
+    margin: 5px;
+    padding: 10px;
+    margin-right: 2%;
+    text-align: left;
+    line-height: 30px;
+    font-size: 14px;
+  }
+
+</style>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div id="footerText" class="col l6 s12">
+                    <p class="white-text">© 2019 Copyright: Jay Little, Tasi Pedro, Phil Dunham, Jenny Thurnau </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./assets/script.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
-
 </html>

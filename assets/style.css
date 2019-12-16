@@ -3,6 +3,15 @@
     background: grey;
 }
 
+
+
+
+ .icon-block {
+    padding: 0 15px;
+  }
+  .icon-block .material-icons {
+      font-size: inherit;
+  }
 p {
     background: local;
 }
