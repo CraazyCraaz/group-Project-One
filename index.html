@@ -11,16 +11,12 @@
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="./assets/style.css">
     <title>Casino Experience</title>
 
     <!-- Dropdown Structure -->
-    <ul id="dropdown1" class="dropdown-content">
-        <li><a href="#!">one</a></li>
-        <li><a href="#!">two</a></li>
-        <li class="divider"></li>
-        <li><a href="#!">three</a></li>
-    </ul>
+
     <nav>
         <div class="nav-wrapper">
             <a href="#!" class="brand-logo">The Casino Experience</a>
@@ -60,10 +56,21 @@
             <p>Current Wager:</p>
         </div>
     </div>
+    <!-- flexbox for the cards to 1) display the deck, 2) the round and the 3) result -->
     <div class="flex-container">
         <div class="box">Cardbox1
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <img src="assets/cardback.jpg" alt="card back" style="width:90px;height:120px;">
+                  </div>
+                  <div class="flip-card-back">
+                    <p>test code </p>
+                  </div>
+                </div>
+              </div>
             <p>CPU Card</p>
-            <img src="assets/cardback.jpg" alt="card back" height="120" width="90">
+            <img animated flipOutY src="assets/cardback.jpg" alt="card back" height="120" width="90">
             <br>
             <p>User Card</p>
             <img src="assets/cardback.jpg" alt="Smiley face" height="120" width="90">
@@ -80,7 +87,7 @@
             <p>CPU's card</p>
             <img src="assets/queenofspades.png" alt="Smiley face" height="120" width="90">
             <p>User card</p>
-            <img src="assets/queenofspades.png" alt="Smiley face" height="120" width="90">
+            <img src="assets/queenofspades.png" alt="Smiley face" height="120" width="90" id = "userCard">
         </div>
         <div class="box">Round Result
             <br><br><br><br>
