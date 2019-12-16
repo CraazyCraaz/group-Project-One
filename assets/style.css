@@ -10,13 +10,14 @@ p {
 
 #wagerBox {
     background-color: rgb(86, 185, 124);
-    width: 60%;
+    width: 62%;
     margin: 5px;
     padding: 15px;
-    margin-left: 2%;
+    margin-left: 1%;
     text-align: left;
     line-height: 20px;
     font-size: 16px;
+    border-radius: 25px;
 }
 
 #roundResult {
@@ -24,6 +25,7 @@ p {
     padding: 3%;
     margin-left: 5%;
     width: 80%;
+    border-radius: 25px;
 }
 
 .flex-container {
@@ -34,16 +36,19 @@ p {
   
   .flex-container .box {
     background-color: rgb(86, 185, 124);
+    border-radius: 25px;
     width: 20%;
-    margin: 5px;
+    margin: 3px;
     padding: 10px;
-    margin-left: 2%;
+    margin-left: 1%;
     text-align: left;
     line-height: 30px;
     font-size: 14px;
   }
 
   .page-footer {
+    /* border-top: 5px solid black; */
+    border-bottom: 10px solid black;
       position: fixed;
       width: 100%;
       align-items: left;
