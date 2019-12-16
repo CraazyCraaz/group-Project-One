@@ -1,7 +1,6 @@
 /***************************************************************
  * CARD API
  ***************************************************************/
-
 function newDeck() {
     var newDeckUrl = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
 
@@ -40,6 +39,21 @@ function shuffle() {
     $.get(shuffleUrl);
 }
 
+function playACard() {
+    var deck = localStorage.getItem("mainDeck")
+    $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P1/draw/?count=1").then(function (response){
+        localStorage.setItem("p1Card", response.cards[0].code)
+        localStorage.setItem("p1ImgUrl", response.cards[0].image)
+        // console.log(response.cards[0].code + "response");
+        // console.log(localStorage.getItem("p1Card")[0] + "from storage");
+        $("#userCard").attr("src",localStorage.getItem("p1ImgUrl"))
+    })
+    $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P2/draw/?count=1").then(function (response){
+        localStorage.setItem("p2Card", response.cards[0].code)
+        console.log(response.cards[0].code);
+    })
+}
+
 $("#deal").on("click", function () {
     firstDeal();
 });
@@ -52,9 +66,9 @@ $("#newDeck").on("click", function () {
     newDeck();
 });
 
-// $(#"playCard").on("click", function () {
-
-// })
+$("#playCard").on("click", function () {
+    playACard();
+})
 
 
 
