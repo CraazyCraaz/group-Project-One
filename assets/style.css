@@ -154,7 +154,7 @@ p {
 .back {
 	transform: rotateY(180deg);
 }
-=======
+
   .flip-card {
     background-color: transparent;
     width: 90px;
@@ -194,7 +194,11 @@ p {
     transform: rotateY(180deg);
   }
 
-  #drinkDisplay {
+  #drinkDisplay, .drinkBackground {
     background-color: rgb(86, 185, 124);
+    text-align: center;
   }
 
+  textarea {
+    background-color: #888;
+  }

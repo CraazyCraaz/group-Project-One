@@ -14,36 +14,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="./assets/style.css">
     <title>Casino Experience</title>
-
-
-    <nav>
-        <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">The Casino Experience</a>
-
-            <ul class="right hide-on-med-and-down">
-                <!-- Modal Trigger -->
-                <!-- <li><a href="sass.html" class="waves-effect waves-light btn">Instructions</a></li> -->
-                <!--<a class="waves-effect waves-light btn">button</a>-->
-                <li><a id="newGame" class="waves-effect waves-light btn">New Game</a></li>
-                <li><button data-target="modal1" class="btn modal-trigger">Instructions</button></li>
-
-                <div id="modal1" class="modal modal-fixed-footer">
-                    <div class="modal-content">
-                        <h4>Instructions</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quis, unde animi asperiores
-                            dolore quo sapiente deserunt aliquid, rem expedita laborum distinctio. Alias tenetur
-                            deserunt reiciendis accusantium dignissimos, aut ratione.
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
-                    </div>
-                </div>
-            </ul>
-        </div>
-    </nav>
-
 </head>
+
+
+<nav>
+    <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">The Casino Experience</a>
+
+        <ul class="right hide-on-med-and-down">
+            <!-- Modal Trigger -->
+            <li><button data-target="modal1" class="btn modal-trigger">Instructions</button></li>
+
+            <div id="modal1" class="modal modal-fixed-footer">
+                <div class="modal-content">
+                    <h4>Instructions</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quis, unde animi asperiores
+                        dolore quo sapiente deserunt aliquid, rem expedita laborum distinctio. Alias tenetur
+                        deserunt reiciendis accusantium dignissimos, aut ratione.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+                </div>
+            </div>
+            <!-- <li><a href="sass.html" class="waves-effect waves-light btn">Instructions</a></li> -->
+            <!--<a class="waves-effect waves-light btn">button</a>-->
+            <li><a id="newGame" class="waves-effect waves-light btn">New Game</a></li>
+        </ul>
+    </div>
+</nav>
+
+
 
 <body>
     <div id="mainContain">
@@ -109,11 +110,22 @@
             </div>
 
 
-            <div id="drinkDiv" class="box" style="text-align : center;">Need a drink?
+            <div id="drinkDiv" class="box">Find your drink!
                 <textarea id="drinkChoice"></textarea>
                 <button type="button" class="btn btn-default" id="searchDrink">Search</button>
                 <button type="button" class="btn btn-default" id="randomDrink">Feelin' Lucky</button>
-                <div id="drinkDisplay" class="white-text"></div>
+                <div id="drinkDisplay" class="white-text" style="text-align : center;">                   
+                </div>
+                <table>
+                    <tr>
+                        <th>Ingredients</th>
+                        <th>Amount</th>
+                    </tr>
+                    <tr>
+                        <td id="One"></td>
+                        <td id="Two"></td>
+                    </tr>
+                </table>
             </div>
 
         </div>
