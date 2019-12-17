@@ -18,6 +18,10 @@
     line-height: 20px;
   }
   
+#startNewRound {
+  display:none;
+}
+
   #wagerWrapper {
     background-color: darkgray;
 }
