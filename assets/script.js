@@ -37,7 +37,7 @@ function shuffle() {
     var deck = localStorage.getItem("mainDeck");
     var shuffleUrl = "https://deckofcardsapi.com/api/deck/" + deck + "/shuffle/"
     console.log("shuffled");
-    $.get(shuffleUrl);
+    $.get(shuffleUrl); 
 }
 
 
@@ -192,7 +192,7 @@ function drinkInfo() {
         url: drinkURL,
         method: "GET"
     }).then(function (response) {
-
+        
         var drinkName = $("<h2>").append(response.drinks[0].strDrink);
         var drinkImg = $("<img>").attr("src", response.drinks[0].strDrinkThumb);
         drinkImg.width(150);
@@ -206,12 +206,12 @@ function drinkInfo() {
                 $("#drinkDisplay").append(drinkIngredients)
             }
         }
-
+        
         for (let j = 1; j < 15; j++) {
             if (response.drinks[0]["strMeasure" + j] != null) {
                 measure = $("<p>").append(response.drinks[0]["strMeasure" + j]);
                 $("#drinkDisplay").append(measure);
-
+                
             }
         }
     });
@@ -222,8 +222,8 @@ $("#searchDrink").on("click", function (event) {
     // event.preventDefault(); ONLY USEFUL FOR FORM TAG / SUBMIT BUTTON
     drinkChoice = $("#drinkChoice").val()
     drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + drinkChoice;
-
-
+    
+    
     drinkInfo();
 });
 
@@ -263,9 +263,11 @@ function randomDrinkInfo() {
 }
 
 $("#randomDrink").on("click", function (event) {
+
     var drinkArray = ["margarita", "long island iced tea", "a1", "dragonfly", "imperial fizz", "mojito", "bloody mary", "royal bitch", "artic mouthwash"]
     var randomDrinkArray = drinkArray[Math.floor(Math.random() * drinkArray.length)];
     randomDrinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + randomDrinkArray;
+
 
     randomDrinkInfo();
 });
@@ -273,4 +275,18 @@ $("#randomDrink").on("click", function (event) {
 // MODAL EVENT LISTENER
 $(document).ready(function () {
     $('.modal').modal();
-});
+
+  });
+
+  //start new game
+  $("#newGame").on("click", function () {
+    $("#mainContain").css("display", "block");
+    $("#newGame").css("display", "none");
+  });
+
+  //js to flip the cards
+  $("#card").flip({
+    trigger: 'manual'
+  });
+  $("#card").flip('toggle');
+
