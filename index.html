@@ -48,53 +48,47 @@
 <body>
 
     <br>
-    <div id="wagerWrapper">
-        <div id="wagerBox">
-            <a class="waves-effect waves-light btn">Increase Wager $5</a>
-            <a class="waves-effect waves-light btn">Decrease Wager $5</a>
-            <br>
-            <p>Current Wager:</p>
-        </div>
-    </div>
-    <!-- flexbox for the cards to 1) display the deck, 2) the round and the 3) result -->
-    <div class="flex-container">
-        <div class="box">Cardbox1
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                  <div class="flip-card-front">
-                    <img src="assets/cardback.jpg" alt="card back" style="width:90px;height:120px;">
-                  </div>
-                  <div class="flip-card-back">
-                    <p>test code </p>
-                  </div>
-                </div>
-              </div>
-            <p>CPU Card</p>
-            <img animated flipOutY src="assets/cardback.jpg" alt="card back" height="120" width="90">
-            <br>
-            <p>User Card</p>
-            <img src="assets/cardback.jpg" alt="Smiley face" height="120" width="90">
-            <br>
-            <a id="newDeck" class="waves-effect waves-light btn-small">New Deck</a>
-            <br><br>
-            <a id="shuffle" class="waves-effect waves-light btn-small">Shuffle</a>
-            <br><br>
-            <a id="deal" class="waves-effect waves-light btn-small">Deal!</a>
-            <br><br>
-            <a id="playCard" class="waves-effect waves-light btn-small">Play a Card</a>
-        </div>
-        <div class="box">This Round
-            <p>CPU's card</p>
-            <img src="assets/queenofspades.png" alt="Smiley face" height="120" width="90" id = "CpuCard">
-            <p>User card</p>
-            <img src="assets/queenofspades.png" alt="Smiley face" height="120" width="90" id = "userCard">
-        </div>
-        <div class="box">Round Result
-            <br><br><br><br>
-            <div id="roundResult">
-                <p>Who won?</p>
+
+    <div id="mainContain">
+        <div id="wagerWrapper">
+            <div id="wagerBox">
+                <a class="waves-effect waves-light btn" id="wagerIncrease">Increase Wager $5</a>
+                <a class="waves-effect waves-light btn" id="wagerDecrease">Decrease Wager $5</a>
+                <br>
+                <p> Current Wager:<span id ="wagerDisplay" ></span></p>
             </div>
         </div>
+        <!-- flexbox for the cards to 1) display the deck, 2) the round and the 3) result -->
+        <div class="flex-container">
+            <div class="box">Click New Deck!
+                <br>
+                <br>
+                    <img src="assets/cardback.jpg" height="120px" width="90px">
+                    <br><br>
+                    <a id="newDeck" class="waves-effect waves-light btn-small">New Deck</a>
+                    <br><br>
+                    <a id="shuffle" class="waves-effect waves-light btn-small">Shuffle</a>
+                    <br><br>
+                    <a id="deal" class="waves-effect waves-light btn-small">Deal!</a>
+                    <br><br>
+                    <a id="playCard" class="waves-effect waves-light btn-small">Play a Card</a>
+            </div>
+            <div class="box">This Round
+                <p>CPU's card</p>
+                <img src="assets/cardback.jpg" height="120px" alt = "card back" width="90px" id="CpuCard">
+                <p>User card</p>
+                <img src="assets/cardback.jpg" alt="card back" height="120" width="90" id="userCard">
+            </div>
+            <div class="box">Round Result
+                <br><br><br><br>
+                <div id="roundResult">
+                    <p id="result">Who won?</p>
+                </div>
+                <br>
+                <div id="finalResult">
+                    <p id="finalScore">Final Score</p>
+                </div>
+            </div>
 
 
         <div id="drinkDiv" class="box" style="text-align : center;">Need a drink?
@@ -110,10 +104,9 @@
         </div>
     </div>
         </div>
-
     </div>
-</div>
-</div>
+
+
 
 <footer class="container-footer">
             <div class="container-fluid" >
@@ -130,15 +123,7 @@
                   <!--<h7 class="white-text">Click on a name to work with a developer!</h7>-->
                   </div>
                 </footer>
-<footer class="container-footer" >
-                  <div class="footer-copyright">
-                  <div id="footerText" class = "container-fluid" class="col l6 s12">
-                        <p class="white-text">© 2019 Copyright: Jay Little, Tasi Pedro, Phil Dunham, Jenny Thurnau </p>
-                    </div>
-                    </div>
-                </footer>
 
-    </footer>
 </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./assets/script.js"></script>
