@@ -160,6 +160,8 @@ function shuffle() {
             if(rounds === 0){
             console.log("Game over!");
             $("#finalScore").text("Game Over! \n You won " + winCount + " Rounds.");
+            $("#startNewRound").css("display", "block");
+            
             }
         }
 // function runoff(){
@@ -241,6 +243,13 @@ $("#wagerDecrease").on("click", function () {
     decreaseWager();
 })
 
+$("#startNewRound").on("click", function () {
+    shuffle();
+    setTimeout(function(){
+        firstDeal();
+    }, 300);
+    $("#finalScore").text("oh, I see you want some more!")
+})
 
 
 //  /***************************************************************
