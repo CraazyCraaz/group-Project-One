@@ -1,6 +1,7 @@
 /* JUST CHECKING TO SEE IF CONNECTED */
 * {
     background: black;
+    color: white;
 }
 
 
@@ -26,11 +27,16 @@ p {
 }
 
 #roundResult {
-    background: white;
+    background: black;
+    color: black;
     padding: 3%;
     margin-left: 5%;
-    width: 80%;
+    width: 60%;
     border-radius: 25px;
+}
+
+#mainContain {
+    display: none;
 }
 
 .flex-container {
@@ -43,12 +49,12 @@ p {
     background-color: rgb(86, 185, 124);
     border-radius: 25px;
     width: 20%;
-    margin: 3px;
+    margin: 1px;
     padding: 10px;
     margin-left: 1%;
     text-align: left;
-    line-height: 30px;
-    font-size: 14px;
+    line-height: 20px;
+    font-size: 16px;
   }
 
   .page-footer {
@@ -75,17 +81,17 @@ p {
     left: 0;
     top: 0;
     width: 80%; /* Full width */
-    height: 50%; /* Full height */
+    height: 30px; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgb(190, 46, 46); /* Fallback color */
+    background-color: rgba(31, 28, 28, 0.4); /* Black w/ opacity */
   }
   
   /* Modal Content/Box */
   .modal-content {
-    color: lightgreen;
+    color: black;
     background-color: rgb(86, 185, 124);
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 7% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 50%; /* Could be more or less, depending on screen size */
@@ -107,6 +113,50 @@ p {
   }
 
   /* flipping the cards */
+
+  /* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000px;
+}
+	/* flip the pane when hovered */
+	.flip-container:hover .flipper, .flip-container.hover .flipper {
+		transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+	height: 120px;
+	width: 90px;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+}
+=======
   .flip-card {
     background-color: transparent;
     width: 90px;
@@ -146,6 +196,7 @@ p {
     transform: rotateY(180deg);
   }
 
+<<<<<<< HEAD
 body { 
     display: flex;
     min-height: 100vh;
@@ -165,3 +216,9 @@ body {
   #footer-container {
     background-color: red;
   }
+=======
+  #drinkDisplay {
+    background-color: rgb(86, 185, 124);
+  }
+
+>>>>>>> 9e2233aaf8b4604453a1c01435ca4eab65a4da68
