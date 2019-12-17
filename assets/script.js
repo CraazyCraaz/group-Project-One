@@ -4,10 +4,13 @@
 var winCount = 0;
 var rounds = 26;
 var wager = 20;
-var bank = 1000;
+// localStorage.setItem("bankroll", 1000);
 function newDeck() {
+    // var bank = 1000;
     var newDeckUrl = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
-
+    if(!localStorage.getItem("bankroll")){
+        localStorage.setItem("bankroll", 1000);
+    }
     $.get(newDeckUrl).then(function (response) {
         console.log(response);
         localStorage.setItem("mainDeck", response.deck_id)
@@ -130,7 +133,9 @@ function shuffle() {
             if (p2Rank[0] > p1Rank[0]) {
                 console.log("p2wins");
                 $("#result").text("Computer wins.");
+                bank = parseInt(localStorage.getItem("bankroll"));
                 bank -= wager;
+                localStorage.setItem("bankroll", bank);
                 $("#winningsDisplay").text(bank);
                 // moveACard("pot" , "P2"); //This function isn't finished
                 
@@ -138,7 +143,9 @@ function shuffle() {
             if (p1Rank[0] > p2Rank[0]) {
                 console.log("p1wins");
                 $("#result").text("You win this round, human!");
+                bank = parseInt(localStorage.getItem("bankroll"));
                 bank += wager;
+                localStorage.setItem("bankroll", bank);
                 $("#winningsDisplay").text(bank);
                 winCount++;
                 console.log(winCount);
@@ -173,7 +180,7 @@ function shuffle() {
 
 // }
 $("#wagerDisplay").text(wager)
-$("#winningsDisplay").text(bank);
+$("#winningsDisplay").text(localStorage.getItem("bankroll"));
 
 function decreaseWager(){
     if(wager > 0){
