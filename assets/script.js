@@ -291,6 +291,7 @@ function drinkInfo() {
 // Event handler for user clicking the searchDrink button
 $("#searchDrink").on("click", function (event) {
     // event.preventDefault(); ONLY USEFUL FOR FORM TAG / SUBMIT BUTTON
+    $("#drinkTable").css("display", "block");
     drinkChoice = $("#drinkChoice").val()
     drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + drinkChoice;
 
@@ -339,7 +340,7 @@ function randomDrinkInfo() {
 }
 
 $("#randomDrink").on("click", function (event) {
-
+    $("#drinkTable").css("display", "block");
     var drinkArray = ["margarita", "long island iced tea", "a1", "dragonfly", "imperial fizz", "mojito", "bloody mary", "royal bitch", "artic mouthwash"]
     var randomDrinkArray = drinkArray[Math.floor(Math.random() * drinkArray.length)];
     randomDrinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + randomDrinkArray;

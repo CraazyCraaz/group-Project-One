@@ -22,6 +22,10 @@
   display:none;
 }
 
+#drinkTable {
+  display: none;
+}
+
   #wagerWrapper {
     background-color: darkgray;
 }
