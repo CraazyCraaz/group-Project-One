@@ -15,85 +15,55 @@
     <link rel="stylesheet" href="./assets/style.css">
     <title>Casino Experience</title>
 </head>
-<!-- Dropdown Structure -->
-    <nav>
-        <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">The Casino Experience</a>
-            <ul class="right hide-on-med-and-down">
-                <li><a id="newGame" class="waves-effect waves-light btn">New Game</a></li>
-                <!-- Modal Trigger -->
-                <li><button data-target="modal1" class="btn modal-trigger">Instructions</button></li>
+
+<nav>
+    <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">The Casino Experience</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a id="newGame" class="waves-effect waves-light btn">New Game</a></li>
+            <!-- Modal Trigger -->
+            <li><button data-target="modal1" class="btn modal-trigger">Instructions</button></li>
 
 
-                <div id="modal1" class="modal modal-fixed-footer">
-                    <div class="modal-content">
-                        <h4>Instructions</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quis, unde animi
-                            asperiores
-                            dolore quo sapiente deserunt aliquid, rem expedita laborum distinctio. Alias
-                            tenetur
-                            deserunt reiciendis accusantium dignissimos, aut ratione.
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
-                    </div>
+            <div id="modal1" class="modal modal-fixed-footer">
+                <div class="modal-content">
+                    <h4>Instructions</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quis, unde animi
+                        asperiores
+                        dolore quo sapiente deserunt aliquid, rem expedita laborum distinctio. Alias
+                        tenetur
+                        deserunt reiciendis accusantium dignissimos, aut ratione.
+                    </p>
                 </div>
-            </ul>
-        </div>
-    </nav>
-
-
-    <body>
-
-        <br>
-
-        <div id="mainContain">
-            <div id="wagerWrapper">
-                <div id="wagerBox">
-                    <a class="waves-effect waves-light btn" id="wagerIncrease">Increase Wager $5</a>
-                    <a class="waves-effect waves-light btn" id="wagerDecrease">Decrease Wager $5</a>
-                    <br>
-                    <p> Current Wager:<span id="wagerDisplay"></span></p>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
                 </div>
             </div>
-            <!-- flexbox for the cards to 1) display the deck, 2) the round and the 3) result -->
-            <div class="flex-container">
-                <div class="box">Click New Deck!
-                    <br>
-                    <br>
-                    <img src="assets/deck shuffle.jpg" height="180px" width="240px">
-                    <br><br>
-                    <a id="newDeck" class="waves-effect waves-light btn-small">New Deck</a>
-                    <br><br>
-                    <a id="shuffle" class="waves-effect waves-light btn-small">Shuffle</a>
-                    <br><br>
-                    <a id="deal" class="waves-effect waves-light btn-small">Deal!</a>
-                    <br><br>
-                    <a id="playCard" class="waves-effect waves-light btn-small">Play a Card</a>
-                </div>
-                <div class="box">This Round
-                    <p>CPU's card</p>
-                    <img src="assets/cardback.jpg" height="120px" alt="card back" width="90px" id="CpuCard">
-                    <p>User card</p>
-                    <img src="assets/cardback.jpg" alt="card back" height="120" width="90" id="userCard">
-                </div>
-                <div class="box">Round Result
-                    <br><br><br><br>
-                    <div id="roundResult">
-                        <p id="result">Who won?</p>
-                    </div>
-                    <br>
-                    <div id="finalResult">
-                        <p id="finalScore">Final Score</p>
-                    </div>
-                </div>
-                <p>CPU Card</p>
-                <img animated flipOutY src="assets/cardback.jpg" alt="card back" height="120" width="90">
+        </ul>
+    </div>
+</nav>
+
+
+<body>
+
+    <br>
+
+    <div id="mainContain">
+        <div id="wagerWrapper">
+            <div id="wagerBox">
+                <a class="waves-effect waves-light btn" id="wagerIncrease">Increase Wager $5</a>
+                <a class="waves-effect waves-light btn" id="wagerDecrease">Decrease Wager $5</a>
                 <br>
-                <p>User Card</p>
-                <img src="assets/cardback.jpg" alt="Smiley face" height="120" width="90">
+                <p> Current Wager:<span id="wagerDisplay"></span></p>
+            </div>
+        </div>
+        <!-- flexbox for the cards to 1) display the deck, 2) the round and the 3) result -->
+        <div class="flex-container">
+            <div class="box">Click New Deck!
                 <br>
+                <br>
+                <img src="assets/deck shuffle.jpg" height="180px" width="240px">
+                <br><br>
                 <a id="newDeck" class="waves-effect waves-light btn-small">New Deck</a>
                 <br><br>
                 <a id="shuffle" class="waves-effect waves-light btn-small">Shuffle</a>
@@ -104,14 +74,18 @@
             </div>
             <div class="box">This Round
                 <p>CPU's card</p>
-                <img src="assets/queenofspades.png" alt="Smiley face" height="120" width="90" id="CpuCard">
+                <img src="assets/cardback.jpg" height="120px" alt="card back" width="90px" id="CpuCard">
                 <p>User card</p>
-                <img src="assets/queenofspades.png" alt="Smiley face" height="120" width="90" id="userCard">
+                <img src="assets/cardback.jpg" alt="card back" height="120" width="90" id="userCard">
             </div>
             <div class="box">Round Result
                 <br><br><br><br>
                 <div id="roundResult">
-                    <p>Who won?</p>
+                    <p id="result">Who won?</p>
+                </div>
+                <br>
+                <div id="finalResult">
+                    <p id="finalScore">Final Score</p>
                 </div>
             </div>
 
@@ -135,27 +109,32 @@
             </div>
 
         </div>
-   
-        <footer class="container-footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col l6 s6">
-                        <h5 class="grey-text text-lighten-3">Meet the team</h5>
+    </div>
 
-                        <ul class="team">
-                            <li><a class="grey-text text-lighten-3" href="#!">Jay Little</a></li>
-                            <li><a class="grey-text text-lighten-3" href="https://www.linkedin.com/in/jthurnau/">Jenny
-                                    Thurnau</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Phillip Dunham</a></li>
-                            <li><a class="grey-text text-lighten-3"
-                                    href="https://www.linkedin.com/in/tasi-pedro-18967a114">Tasi Pedro</a></li>
-                        </ul>
-                        <!--<h7 class="white-text">Click on a name to work with a developer!</h7>-->
-                    </div>
-        </footer>
-    </body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="./assets/script.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+</div>
+<br><br><br>
+<br>
+    <footer class="container-footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col l6 s6">
+                    <h5 class="grey-text text-lighten-3">Meet the team</h5>
+
+                    <ul class="team">
+                        <li><a class="grey-text text-lighten-3" href="https://www.linkedin.com/in/jlittle30/">Jay Little</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.linkedin.com/in/jthurnau/">Jenny
+                                Thurnau</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Phillip Dunham</a></li>
+                        <li><a class="grey-text text-lighten-3"
+                                href="https://www.linkedin.com/in/tasi-pedro-18967a114">Tasi Pedro</a></li>
+                    </ul>
+                    <!--<h7 class="white-text">Click on a name to work with a developer!</h7>-->
+                </div>
+    </footer>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="./assets/script.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
 
 </html>
