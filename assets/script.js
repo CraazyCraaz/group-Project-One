@@ -6,6 +6,7 @@ var rounds = 26;
 var wager = 20;
 // localStorage.setItem("bankroll", 1000);
 function newDeck() {
+    // var bank = 1000;
     var newDeckUrl = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
     if(!localStorage.getItem("bankroll")){
         localStorage.setItem("bankroll", 1000);
@@ -193,25 +194,7 @@ function increaseWager(){
 }
     
 
-$("#newGame").on("click", function(){
-    if(!localStorage.getItem("mainDeck")){
-        newDeck();
-        setTimeout(function(){ 
-            shuffle()
-        }, 300);
-        setTimeout(function(){
-            firstDeal();
-        }, 300);
-    }
-    else{
-        shuffle();
-        setTimeout(function(){
-            firstDeal();
-        }, 300);
 
-    }
-
-})
 
 $("#deal").on("click", function () {
     firstDeal();
@@ -291,7 +274,6 @@ function drinkInfo() {
 // Event handler for user clicking the searchDrink button
 $("#searchDrink").on("click", function (event) {
     // event.preventDefault(); ONLY USEFUL FOR FORM TAG / SUBMIT BUTTON
-    $("#drinkTable").css("display", "block");
     drinkChoice = $("#drinkChoice").val()
     drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + drinkChoice;
 
@@ -340,7 +322,7 @@ function randomDrinkInfo() {
 }
 
 $("#randomDrink").on("click", function (event) {
-    $("#drinkTable").css("display", "block");
+
     var drinkArray = ["margarita", "long island iced tea", "a1", "dragonfly", "imperial fizz", "mojito", "bloody mary", "royal bitch", "artic mouthwash"]
     var randomDrinkArray = drinkArray[Math.floor(Math.random() * drinkArray.length)];
     randomDrinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + randomDrinkArray;
