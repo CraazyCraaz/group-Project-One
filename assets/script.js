@@ -4,6 +4,7 @@
 var winCount = 0;
 var rounds = 26;
 var wager = 20;
+var bank = 1000;
 function newDeck() {
     var newDeckUrl = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
 
@@ -129,20 +130,22 @@ function shuffle() {
             if (p2Rank[0] > p1Rank[0]) {
                 console.log("p2wins");
                 $("#result").text("Computer wins.");
+                bank -= wager;
                 // moveACard("pot" , "P2"); //This function isn't finished
                 
             }
             if (p1Rank[0] > p2Rank[0]) {
                 console.log("p1wins");
                 $("#result").text("You win this round, human!");
+                bank += wager
                 winCount++;
                 console.log(winCount);
         
             }
             if (p1Rank[0] === p2Rank[0]) {
-                winCount++;
-                console.log(winCount);
-                
+                // winCount++;
+                // console.log(winCount);
+                $("#result").text("Push. BOOOOORRRRING!")
                 // console.log("RUNOFF!");
                 // runoff();
             }
