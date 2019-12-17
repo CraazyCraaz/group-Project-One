@@ -148,7 +148,7 @@ function shuffle() {
             }
             if(rounds === 0){
             console.log("Game over!");
-            console.log(("You won " + winCount + " Rounds."));
+            $("#finalScore").text("Game Over! \n You won " + winCount + " Rounds.");
             }
         }
 // function runoff(){
