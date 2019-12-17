@@ -14,7 +14,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="./assets/style.css">
     <title>Casino Experience</title>
+<<<<<<< HEAD
 
+=======
+</head>
+>>>>>>> e619c576dc719754a7f7b240d655236d8a6d2dd2
     <!-- Dropdown Structure -->
 
     <nav>
@@ -38,64 +42,57 @@
                 </div>
                 <!-- <li><a href="sass.html" class="waves-effect waves-light btn">Instructions</a></li> -->
                 <!--<a class="waves-effect waves-light btn">button</a>-->
-                <li><a href="badges.html" class="waves-effect waves-light btn">New Game</a></li>
+                <li><a id="newGame" class="waves-effect waves-light btn">New Game</a></li>
             </ul>
         </div>
     </nav>
 
-</head>
+
 
 <body>
 
     <br>
-    <div id="wagerWrapper">
-        <div id="wagerBox">
-            <a class="waves-effect waves-light btn">Increase Wager $5</a>
-            <a class="waves-effect waves-light btn">Decrease Wager $5</a>
-            <br>
-            <p>Current Wager:</p>
-        </div>
-    </div>
-    <!-- flexbox for the cards to 1) display the deck, 2) the round and the 3) result -->
-    <div class="flex-container">
-        <div class="box">Cardbox1
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                  <div class="flip-card-front">
-                    <img src="assets/cardback.jpg" alt="card back" style="width:90px;height:120px;">
-                  </div>
-                  <div class="flip-card-back">
-                    <p>test code </p>
-                  </div>
-                </div>
-              </div>
-            <p>CPU Card</p>
-            <img animated flipOutY src="assets/cardback.jpg" alt="card back" height="120" width="90">
-            <br>
-            <p>User Card</p>
-            <img src="assets/cardback.jpg" alt="Smiley face" height="120" width="90">
-            <br>
-            <a id="newDeck" class="waves-effect waves-light btn-small">New Deck</a>
-            <br><br>
-            <a id="shuffle" class="waves-effect waves-light btn-small">Shuffle</a>
-            <br><br>
-            <a id="deal" class="waves-effect waves-light btn-small">Deal!</a>
-            <br><br>
-            <a id="playCard" class="waves-effect waves-light btn-small">Play a Card</a>
-        </div>
-        <div class="box">This Round
-            <p>CPU's card</p>
-            <img src="assets/queenofspades.png" alt="Smiley face" height="120" width="90" id = "CpuCard">
-            <p>User card</p>
-            <img src="assets/queenofspades.png" alt="Smiley face" height="120" width="90" id = "userCard">
-        </div>
-        <div class="box">Round Result
-            <br><br><br><br>
-            <div id="roundResult">
-                <p>Who won?</p>
+
+    <div id="mainContain">
+        <div id="wagerWrapper">
+            <div id="wagerBox">
+                <a class="waves-effect waves-light btn" id="wagerIncrease">Increase Wager $5</a>
+                <a class="waves-effect waves-light btn" id="wagerDecrease">Decrease Wager $5</a>
+                <br>
+                <p> Current Wager:<span id ="wagerDisplay" ></span></p>
             </div>
         </div>
-
+        <!-- flexbox for the cards to 1) display the deck, 2) the round and the 3) result -->
+        <div class="flex-container">
+            <div class="box">Click New Deck!
+                <br>
+                <br>
+                    <img src="assets/cardback.jpg" height="120px" width="90px">
+                    <br><br>
+                    <a id="newDeck" class="waves-effect waves-light btn-small">New Deck</a>
+                    <br><br>
+                    <a id="shuffle" class="waves-effect waves-light btn-small">Shuffle</a>
+                    <br><br>
+                    <a id="deal" class="waves-effect waves-light btn-small">Deal!</a>
+                    <br><br>
+                    <a id="playCard" class="waves-effect waves-light btn-small">Play a Card</a>
+            </div>
+            <div class="box">This Round
+                <p>CPU's card</p>
+                <img src="assets/cardback.jpg" height="120px" alt = "card back" width="90px" id="CpuCard">
+                <p>User card</p>
+                <img src="assets/cardback.jpg" alt="card back" height="120" width="90" id="userCard">
+            </div>
+            <div class="box">Round Result
+                <br><br><br><br>
+                <div id="roundResult">
+                    <p id="result">Who won?</p>
+                </div>
+                <br>
+                <div id="finalResult">
+                    <p id="finalScore">Final Score</p>
+                </div>
+            </div>
 
         <div id="drinkDiv" class="box" style="text-align : center;">Need a drink?
 
@@ -106,10 +103,26 @@
 
             <div id="drinkDisplay" class="white-text"></div>
 
+<<<<<<< HEAD
             </div>
+=======
+        <div id="drinkDiv" class="box" style="text-align : center;">Need a drink?
+>>>>>>> e619c576dc719754a7f7b240d655236d8a6d2dd2
 
+            <textarea id="drinkChoice"></textarea>
+         
+            <button type="button" class="btn btn-default" id="searchDrink">Search</button>
+            <button type="button" class="btn btn-default" id="randomDrink">Feeling lucky?</button>
+            
+            <div id="drinkDisplay" class="white-text"></div>
+           
+            </div>
         </div>
+    </div>
+        </div>
+    </div>
 
+<<<<<<< HEAD
     </div>
 
 
@@ -126,6 +139,29 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./assets/script.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
+=======
+
+
+<footer class="container-footer">
+            <div class="container-fluid" >
+              <div class="row" >
+                <div class="col l6 s6">
+                  <h5 class="grey-text text-lighten-3" >Meet the team</h5>
+            
+                  <ul class="team">
+                    <li><a class="grey-text text-lighten-3" href="#!">Jay Little</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Jenny Thurnau</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Phillip Dunham</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.linkedin.com/in/tasi-pedro-18967a114">Tasi Pedro</a></li>
+                  </ul>
+                  <!--<h7 class="white-text">Click on a name to work with a developer!</h7>-->
+                  </div>
+                </footer>
+
+>>>>>>> e619c576dc719754a7f7b240d655236d8a6d2dd2
 </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./assets/script.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
 
 </html>
