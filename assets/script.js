@@ -167,13 +167,17 @@ function shuffle() {
 //     })
 
 // }
+$("#wagerDisplay").text(wager)
+
 function decreaseWager(){
     if(wager > 0){
         wager -= 5;
+        $("#wagerDisplay").text(wager)
     }
 }
 function increaseWager(){
     wager += 5;
+    $("#wagerDisplay").text(wager)
 }
     
 
@@ -203,7 +207,7 @@ $("#wagerIncrease").on("click", function() {
     increaseWager();
 })
 
-$("wagerDecrease").on("click", function () {
+$("#wagerDecrease").on("click", function () {
     decreaseWager();
 })
 
