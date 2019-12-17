@@ -41,7 +41,7 @@ function shuffle() {
     winCount = 0;
     var shuffleUrl = "https://deckofcardsapi.com/api/deck/" + deck + "/shuffle/"
     console.log("shuffled");
-    $.get(shuffleUrl); 
+    $.get(shuffleUrl);
 }
 
 
@@ -159,11 +159,11 @@ function shuffle() {
 //     console.log(p1DeckSize + " p1 cards remain");
 //     console.log(p2DeckSize + " p2 cards remain");
 //     console.log(potSize + " cards in pot");
-    
+
 //     if(p1DeckSize > 1 && p2DeckSize > 1){
 
 //     }
-    
+
 //     })
 
 // }
@@ -228,26 +228,31 @@ function drinkInfo() {
         url: drinkURL,
         method: "GET"
     }).then(function (response) {
-        
-        var drinkName = $("<h2>").append(response.drinks[0].strDrink);
+
+        var drinkName = $("<h3>").append(response.drinks[0].strDrink);
+        drinkName.addClass("drinkBackground")
         var drinkImg = $("<img>").attr("src", response.drinks[0].strDrinkThumb);
-        drinkImg.width(150);
+        drinkImg.width(200);
         var drinkIngredients = "";
         var measure = "";
         $("#drinkDisplay").empty();
+        $("#One").empty();
+        $("#Two").empty();
         $("#drinkDisplay").append(drinkName, drinkImg)
         for (let i = 1; i < 15; i++) {
             if (response.drinks[0]["strIngredient" + i] != null) {
-                drinkIngredients = $("<li>").append(response.drinks[0]["strIngredient" + i]);
-                $("#drinkDisplay").append(drinkIngredients)
+                drinkIngredients = $("<p>").append(response.drinks[0]["strIngredient" + i]);
+                drinkIngredients.addClass("drinkBackground");
+                $("#One").append(drinkIngredients);
             }
         }
-        
+
         for (let j = 1; j < 15; j++) {
             if (response.drinks[0]["strMeasure" + j] != null) {
                 measure = $("<p>").append(response.drinks[0]["strMeasure" + j]);
-                $("#drinkDisplay").append(measure);
-                
+                measure.addClass("drinkBackground");
+                $("#Two").append(measure);
+
             }
         }
     });
@@ -258,8 +263,8 @@ $("#searchDrink").on("click", function (event) {
     // event.preventDefault(); ONLY USEFUL FOR FORM TAG / SUBMIT BUTTON
     drinkChoice = $("#drinkChoice").val()
     drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + drinkChoice;
-    
-    
+
+
     drinkInfo();
 });
 
@@ -274,24 +279,29 @@ function randomDrinkInfo() {
         method: "GET"
     }).then(function (response) {
 
-        var drinkName = $("<h2>").append(response.drinks[0].strDrink);
+        var drinkName = $("<h3>").append(response.drinks[0].strDrink);
+        drinkName.addClass("drinkBackground")
         var drinkImg = $("<img>").attr("src", response.drinks[0].strDrinkThumb);
-        drinkImg.width(150);
+        drinkImg.width(200);
         var drinkIngredients = "";
         var measure = "";
         $("#drinkDisplay").empty();
+        $("#One").empty();
+        $("#Two").empty();
         $("#drinkDisplay").append(drinkName, drinkImg)
         for (let i = 1; i < 15; i++) {
             if (response.drinks[0]["strIngredient" + i] != null) {
-                drinkIngredients = $("<li>").append(response.drinks[0]["strIngredient" + i]);
-                $("#drinkDisplay").append(drinkIngredients)
+                drinkIngredients = $("<p>").append(response.drinks[0]["strIngredient" + i]);
+                drinkIngredients.addClass("drinkBackground");
+                $("#One").append(drinkIngredients);
             }
         }
 
         for (let j = 1; j < 15; j++) {
             if (response.drinks[0]["strMeasure" + j] != null) {
                 measure = $("<p>").append(response.drinks[0]["strMeasure" + j]);
-                $("#drinkDisplay").append(measure);
+                measure.addClass("drinkBackground");
+                $("#Two").append(measure);
 
             }
         }
@@ -312,17 +322,17 @@ $("#randomDrink").on("click", function (event) {
 $(document).ready(function () {
     $('.modal').modal();
 
-  });
+});
 
-  //start new game
-  $("#newGame").on("click", function () {
+//start new game
+$("#newGame").on("click", function () {
     $("#mainContain").css("display", "block");
     $("#newGame").css("display", "none");
-  });
+});
 
-  //js to flip the cards
-  $("#card").flip({
+//js to flip the cards
+$("#card").flip({
     trigger: 'manual'
-  });
-  $("#card").flip('toggle');
+});
+$("#card").flip('toggle');
 
