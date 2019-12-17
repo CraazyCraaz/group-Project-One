@@ -1,6 +1,7 @@
 /***************************************************************
  * CARD API
  ***************************************************************/
+var winCount = 0;
 function newDeck() {
     var newDeckUrl = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
 
@@ -41,77 +42,99 @@ function shuffle() {
 
 
 function playACard() {
-    var deck = localStorage.getItem("mainDeck")
+    var deck = localStorage.getItem("mainDeck");
 
-    $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P1/draw/?count=1").then(function (response) {
+    $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P1/draw/bottom/?count=1").then(function (response) {
         localStorage.setItem("p1Card", response.cards[0].code)
         localStorage.setItem("p1ImgUrl", response.cards[0].image)
         $("#userCard").attr("src", localStorage.getItem("p1ImgUrl"))
-        // $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/pot/add/?cards=" + response.cards[0].code);
+        $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/pot/add/?cards=" + response.cards[0].code);
 
-        $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P2/draw/?count=1").then(function (response) {
+        $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P2/draw/bottom/?count=1").then(function (response) {
             localStorage.setItem("p2Card", response.cards[0].code);
             localStorage.setItem("p2ImgUrl", response.cards[0].image);
             $("#CpuCard").attr("src", localStorage.getItem("p2ImgUrl"));
-            // $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/pot/add/?cards=" + response.cards);
+            $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/pot/add/?cards=" + response.cards);
 
             compare();
         })
     })
 }
+// This section will need to wait for reply from API to work. setTimeout?
+// function moveACard(moveFrom, moveTo){
+//     var deck = localStorage.getItem("mainDeck");
+//     $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/" + moveFrom + "/draw/?count=1").then(function (response) { 
+//         console.log(response.cards[0].code);
+        
+//         localStorage.setItem("movingCard" , response.cards[0].code)
+//     });
+//     $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/" + moveTo + "/add/?cards=" + localStorage.getItem("movingCard"));
+// }
+
 function compare() {
+    var deck = localStorage.getItem("mainDeck");
     var p1Rank = localStorage.getItem("p1Card").split("");
     console.log(p1Rank[0] + " p1rank");
     if (p1Rank[0] === "0") {
         p1Rank[0] = 10
-        console.log(p1Rank + " fix");
+        // console.log(p1Rank + " fix");
     }
     if (p1Rank[0] === "J") {
         p1Rank[0] = 11
-        console.log(p1Rank + " fix");
+        // console.log(p1Rank + " fix");
     }
     if (p1Rank[0] === "Q") {
         p1Rank[0] = 12
-        console.log(p1Rank + " fix");
+        // console.log(p1Rank + " fix");
     }
     if (p1Rank[0] === "K") {
         p1Rank[0] = 13
-        console.log(p1Rank + " fix");
+        // console.log(p1Rank + " fix");
     }
     if (p1Rank[0] === "A") {
         p1Rank[0] = 14
-        console.log(p1Rank + " fix");
+        // console.log(p1Rank + " fix");
     }
     var p2Rank = localStorage.getItem("p2Card").split("");
     console.log(p2Rank[0] + " p2rank");
     if (p2Rank[0] === "0") {
         p2Rank[0] = 10
-        console.log(p2Rank + " fix");
+        // console.log(p2Rank + " fix");
     }
     if (p2Rank[0] === "J") {
         p2Rank[0] = 11
-        console.log(p2Rank + " fix");
+        // console.log(p2Rank + " fix");
     }
     if (p2Rank[0] === "Q") {
         p2Rank[0] = 12
-        console.log(p2Rank + " fix");
+        // console.log(p2Rank + " fix");
     }
     if (p2Rank[0] === "K") {
         p2Rank[0] = 13
-        console.log(p2Rank + " fix");
+        // console.log(p2Rank + " fix");
     }
     if (p2Rank[0] === "A") {
         p2Rank[0] = 14
-        console.log(p2Rank + " fix");
+        // console.log(p2Rank + " fix");
     }
     if (p2Rank[0] > p1Rank[0]) {
         console.log("p2wins");
+        $("#result").text("Computer wins");
+        // moveACard("pot" , "P2"); //This function isn't finished
+
     }
     if (p1Rank[0] > p2Rank[0]) {
         console.log("p1wins");
+        $("#result").text("You win this round, human");
+        winCount++;
+        console.log(winCount);
+        
     }
     if (p1Rank[0] === p2Rank[0]) {
-        console.log("RUNOFF!");
+        winCount++;
+        console.log(winCount);
+
+        // console.log("RUNOFF!");
         // runoff();
     }
 }
