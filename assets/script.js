@@ -131,13 +131,15 @@ function shuffle() {
                 console.log("p2wins");
                 $("#result").text("Computer wins.");
                 bank -= wager;
+                $("#winningsDisplay").text(bank);
                 // moveACard("pot" , "P2"); //This function isn't finished
                 
             }
             if (p1Rank[0] > p2Rank[0]) {
                 console.log("p1wins");
                 $("#result").text("You win this round, human!");
-                bank += wager
+                bank += wager;
+                $("#winningsDisplay").text(bank);
                 winCount++;
                 console.log(winCount);
         
@@ -171,6 +173,7 @@ function shuffle() {
 
 // }
 $("#wagerDisplay").text(wager)
+$("#winningsDisplay").text(bank);
 
 function decreaseWager(){
     if(wager > 0){
