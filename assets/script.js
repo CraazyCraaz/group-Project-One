@@ -258,6 +258,7 @@ $(document).ready(function () {
   //start new game
   $("#newGame").on("click", function () {
     $("#mainContain").css("display", "block");
+    $("#newGame").css("display", "none");
   });
 
   //js to flip the cards
