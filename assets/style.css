@@ -215,3 +215,13 @@
   textarea {
     background-color: #888;
   }
+
+  #wagerDisplay {
+    font-size: 16px;
+    background: inherit;
+  }
+  #winningsDisplay {
+    font-size: 16px;
+    background: inherit;
+  }
+
