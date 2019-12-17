@@ -6,7 +6,6 @@ var rounds = 26;
 var wager = 20;
 // localStorage.setItem("bankroll", 1000);
 function newDeck() {
-    // var bank = 1000;
     var newDeckUrl = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
     if(!localStorage.getItem("bankroll")){
         localStorage.setItem("bankroll", 1000);
@@ -194,7 +193,25 @@ function increaseWager(){
 }
     
 
+$("#newGame").on("click", function(){
+    if(!localStorage.getItem("mainDeck")){
+        newDeck();
+        setTimeout(function(){ 
+            shuffle()
+        }, 300);
+        setTimeout(function(){
+            firstDeal();
+        }, 300);
+    }
+    else{
+        shuffle();
+        setTimeout(function(){
+            firstDeal();
+        }, 300);
 
+    }
+
+})
 
 $("#deal").on("click", function () {
     firstDeal();
