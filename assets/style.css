@@ -81,6 +81,8 @@
       width: 100%;
       height: 40px;
       background: rgb(83, 83, 83);
+      flex-direction: column;
+       
   }
 
   .modal {
@@ -205,7 +207,29 @@
     transform: rotateY(180deg);
   }
 
+<<<<<<< HEAD
+body { 
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  /*ul .team:hover {
+  
+  }*/
+  
+  
+  #footer-container {
+    background-color: red;
+  }
+=======
   #drinkDisplay {
     background-color: rgb(86, 185, 124);
   }
 
+>>>>>>> 9e2233aaf8b4604453a1c01435ca4eab65a4da68
