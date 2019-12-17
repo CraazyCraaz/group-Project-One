@@ -2,6 +2,7 @@
  * CARD API
  ***************************************************************/
 var winCount = 0;
+var rounds = 26;
 function newDeck() {
     var newDeckUrl = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
 
@@ -35,6 +36,7 @@ function firstDeal() {
 
 function shuffle() {
     var deck = localStorage.getItem("mainDeck");
+    rounds = 26;
     var shuffleUrl = "https://deckofcardsapi.com/api/deck/" + deck + "/shuffle/"
     console.log("shuffled");
     $.get(shuffleUrl); 
@@ -43,7 +45,9 @@ function shuffle() {
 
 function playACard() {
     var deck = localStorage.getItem("mainDeck");
-
+    rounds --;
+    console.log(rounds);
+    
     $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P1/draw/bottom/?count=1").then(function (response) {
         localStorage.setItem("p1Card", response.cards[0].code)
         localStorage.setItem("p1ImgUrl", response.cards[0].image)
@@ -119,13 +123,13 @@ function compare() {
     }
     if (p2Rank[0] > p1Rank[0]) {
         console.log("p2wins");
-        $("#result").text("Computer wins");
+        $("#result").text("Computer wins.");
         // moveACard("pot" , "P2"); //This function isn't finished
 
     }
     if (p1Rank[0] > p2Rank[0]) {
         console.log("p1wins");
-        $("#result").text("You win this round, human");
+        $("#result").text("You win this round, human!");
         winCount++;
         console.log(winCount);
         
