@@ -54,7 +54,6 @@
     display: flex;
     flex-wrap: nowrap;
     background-color: gray;
-    justify-content: space-between;
   }
   
   .flex-container .box {
@@ -72,16 +71,10 @@
   .page-footer {
     /* border-top: 5px solid black; */
     border-bottom: 10px solid black;
+      position: fixed;
       width: 100%;
       align-items: left;
       background: rgb(83, 83, 83);
-  }
-
-  footer {
-    position: sticky; ; /*fixed*/
-    bottom: 0;
-    width: 100%;
-    z-index: 1;
   }
 
 #footerText {
