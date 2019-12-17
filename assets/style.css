@@ -2,15 +2,18 @@
 * {
     background: black;
     color: white;
-}
-
-
-
-p {
+  }
+  
+  body {
+    background-image: url("/assets/deck-of-cards.jpg");
+  }
+  
+  
+  p {
     background: local;
-}
-
-#wagerWrapper {
+  }
+  
+  #wagerWrapper {
     background-color: darkgray;
 }
 
@@ -34,6 +37,14 @@ p {
     width: 60%;
     border-radius: 25px;
 }
+#finalResult {
+    background: black;
+    color: black;
+    padding: 3%;
+    margin-left: 5%;
+    width: 60%;
+    border-radius: 25px;
+}
 
 #mainContain {
     display: none;
@@ -48,13 +59,13 @@ p {
   .flex-container .box {
     background-color: rgb(86, 185, 124);
     border-radius: 25px;
-    width: 25%;
-    margin: 3px;
+    width: 20%;
+    margin: 1px;
     padding: 10px;
     margin-left: 1%;
     text-align: left;
-    line-height: 30px;
-    font-size: 14px;
+    line-height: 20px;
+    font-size: 16px;
   }
 
   .page-footer {
@@ -70,6 +81,8 @@ p {
       width: 100%;
       height: 40px;
       background: rgb(83, 83, 83);
+      flex-direction: column;
+       
   }
 
   .modal {
