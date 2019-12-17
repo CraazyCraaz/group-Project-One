@@ -225,3 +225,7 @@
     background: inherit;
   }
 
+  table, th, td {
+    background-color: rgb(86, 185, 124);
+    text-align: center;
+  }
