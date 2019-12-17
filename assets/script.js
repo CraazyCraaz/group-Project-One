@@ -2,6 +2,8 @@
  * CARD API
  ***************************************************************/
 var winCount = 0;
+var rounds = 26;
+var wager = 20;
 function newDeck() {
     var newDeckUrl = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
 
@@ -35,109 +37,120 @@ function firstDeal() {
 
 function shuffle() {
     var deck = localStorage.getItem("mainDeck");
+    rounds = 26;
+    winCount = 0;
     var shuffleUrl = "https://deckofcardsapi.com/api/deck/" + deck + "/shuffle/"
     console.log("shuffled");
-    $.get(shuffleUrl); 
+    $.get(shuffleUrl);
 }
 
 
-function playACard() {
-    var deck = localStorage.getItem("mainDeck");
 
-    $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P1/draw/bottom/?count=1").then(function (response) {
-        localStorage.setItem("p1Card", response.cards[0].code)
-        localStorage.setItem("p1ImgUrl", response.cards[0].image)
-        $("#userCard").attr("src", localStorage.getItem("p1ImgUrl"))
-        $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/pot/add/?cards=" + response.cards[0].code);
-
-        $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P2/draw/bottom/?count=1").then(function (response) {
-            localStorage.setItem("p2Card", response.cards[0].code);
-            localStorage.setItem("p2ImgUrl", response.cards[0].image);
-            $("#CpuCard").attr("src", localStorage.getItem("p2ImgUrl"));
-            $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/pot/add/?cards=" + response.cards);
-
-            compare();
+    function playACard() {
+        var deck = localStorage.getItem("mainDeck");
+        rounds --;
+        console.log(rounds);
+        
+        
+        $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P1/draw/bottom/?count=1").then(function (response) {
+            localStorage.setItem("p1Card", response.cards[0].code)
+            localStorage.setItem("p1ImgUrl", response.cards[0].image)
+            $("#userCard").attr("src", localStorage.getItem("p1ImgUrl"))
+            $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/pot/add/?cards=" + response.cards[0].code);
+            
+            $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/P2/draw/bottom/?count=1").then(function (response) {
+                localStorage.setItem("p2Card", response.cards[0].code);
+                localStorage.setItem("p2ImgUrl", response.cards[0].image);
+                $("#CpuCard").attr("src", localStorage.getItem("p2ImgUrl"));
+                $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/pot/add/?cards=" + response.cards);
+                
+                compare();
+            })
         })
-    })
-}
+    }
+
 // This section will need to wait for reply from API to work. setTimeout?
 // function moveACard(moveFrom, moveTo){
-//     var deck = localStorage.getItem("mainDeck");
-//     $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/" + moveFrom + "/draw/?count=1").then(function (response) { 
-//         console.log(response.cards[0].code);
+    //     var deck = localStorage.getItem("mainDeck");
+    //     $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/" + moveFrom + "/draw/?count=1").then(function (response) { 
+        //         console.log(response.cards[0].code);
         
-//         localStorage.setItem("movingCard" , response.cards[0].code)
-//     });
-//     $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/" + moveTo + "/add/?cards=" + localStorage.getItem("movingCard"));
-// }
-
-function compare() {
-    var deck = localStorage.getItem("mainDeck");
-    var p1Rank = localStorage.getItem("p1Card").split("");
-    console.log(p1Rank[0] + " p1rank");
-    if (p1Rank[0] === "0") {
-        p1Rank[0] = 10
-        // console.log(p1Rank + " fix");
-    }
-    if (p1Rank[0] === "J") {
-        p1Rank[0] = 11
-        // console.log(p1Rank + " fix");
-    }
-    if (p1Rank[0] === "Q") {
-        p1Rank[0] = 12
-        // console.log(p1Rank + " fix");
-    }
-    if (p1Rank[0] === "K") {
-        p1Rank[0] = 13
-        // console.log(p1Rank + " fix");
-    }
-    if (p1Rank[0] === "A") {
-        p1Rank[0] = 14
-        // console.log(p1Rank + " fix");
-    }
-    var p2Rank = localStorage.getItem("p2Card").split("");
-    console.log(p2Rank[0] + " p2rank");
-    if (p2Rank[0] === "0") {
-        p2Rank[0] = 10
-        // console.log(p2Rank + " fix");
-    }
-    if (p2Rank[0] === "J") {
-        p2Rank[0] = 11
-        // console.log(p2Rank + " fix");
-    }
-    if (p2Rank[0] === "Q") {
-        p2Rank[0] = 12
-        // console.log(p2Rank + " fix");
-    }
-    if (p2Rank[0] === "K") {
-        p2Rank[0] = 13
-        // console.log(p2Rank + " fix");
-    }
-    if (p2Rank[0] === "A") {
-        p2Rank[0] = 14
-        // console.log(p2Rank + " fix");
-    }
-    if (p2Rank[0] > p1Rank[0]) {
-        console.log("p2wins");
-        $("#result").text("Computer wins");
-        // moveACard("pot" , "P2"); //This function isn't finished
-
-    }
-    if (p1Rank[0] > p2Rank[0]) {
-        console.log("p1wins");
-        $("#result").text("You win this round, human");
-        winCount++;
-        console.log(winCount);
+        //         localStorage.setItem("movingCard" , response.cards[0].code)
+        //     });
+        //     $.get("https://deckofcardsapi.com/api/deck/" + deck + "/pile/" + moveTo + "/add/?cards=" + localStorage.getItem("movingCard"));
+        // }
         
-    }
-    if (p1Rank[0] === p2Rank[0]) {
-        winCount++;
-        console.log(winCount);
-
-        // console.log("RUNOFF!");
-        // runoff();
-    }
-}
+        function compare() {
+            var deck = localStorage.getItem("mainDeck");
+            var p1Rank = localStorage.getItem("p1Card").split("");
+            console.log(p1Rank[0] + " p1rank");
+            if (p1Rank[0] === "0") {
+                p1Rank[0] = 10
+                // console.log(p1Rank + " fix");
+            }
+            if (p1Rank[0] === "J") {
+                p1Rank[0] = 11
+                // console.log(p1Rank + " fix");
+            }
+            if (p1Rank[0] === "Q") {
+                p1Rank[0] = 12
+                // console.log(p1Rank + " fix");
+            }
+            if (p1Rank[0] === "K") {
+                p1Rank[0] = 13
+                // console.log(p1Rank + " fix");
+            }
+            if (p1Rank[0] === "A") {
+                p1Rank[0] = 14
+                // console.log(p1Rank + " fix");
+            }
+            var p2Rank = localStorage.getItem("p2Card").split("");
+            console.log(p2Rank[0] + " p2rank");
+            if (p2Rank[0] === "0") {
+                p2Rank[0] = 10
+                // console.log(p2Rank + " fix");
+            }
+            if (p2Rank[0] === "J") {
+                p2Rank[0] = 11
+                // console.log(p2Rank + " fix");
+            }
+            if (p2Rank[0] === "Q") {
+                p2Rank[0] = 12
+                // console.log(p2Rank + " fix");
+            }
+            if (p2Rank[0] === "K") {
+                p2Rank[0] = 13
+                // console.log(p2Rank + " fix");
+            }
+            if (p2Rank[0] === "A") {
+                p2Rank[0] = 14
+                // console.log(p2Rank + " fix");
+            }
+            if (p2Rank[0] > p1Rank[0]) {
+                console.log("p2wins");
+                $("#result").text("Computer wins.");
+                // moveACard("pot" , "P2"); //This function isn't finished
+                
+            }
+            if (p1Rank[0] > p2Rank[0]) {
+                console.log("p1wins");
+                $("#result").text("You win this round, human!");
+                winCount++;
+                console.log(winCount);
+        
+            }
+            if (p1Rank[0] === p2Rank[0]) {
+                winCount++;
+                console.log(winCount);
+                
+                // console.log("RUNOFF!");
+                // runoff();
+            }
+            if(rounds === 0){
+            console.log("Game over!");
+            $("#finalScore").text("Game Over! \n You won " + winCount + " Rounds.");
+            }
+        }
 // function runoff(){
 //     $.get("https://deckofcardsapi.com/api/deck/" + localStorage.getItem("mainDeck") + "/pile/p1/list/").then(function (response) {
 //     var p1DeckSize = response.piles.P1.remaining;
@@ -146,15 +159,26 @@ function compare() {
 //     console.log(p1DeckSize + " p1 cards remain");
 //     console.log(p2DeckSize + " p2 cards remain");
 //     console.log(potSize + " cards in pot");
-    
+
 //     if(p1DeckSize > 1 && p2DeckSize > 1){
 
 //     }
-    
+
 //     })
 
 // }
+$("#wagerDisplay").text(wager)
 
+function decreaseWager(){
+    if(wager > 0){
+        wager -= 5;
+        $("#wagerDisplay").text(wager)
+    }
+}
+function increaseWager(){
+    wager += 5;
+    $("#wagerDisplay").text(wager)
+}
     
 
 
@@ -172,7 +196,19 @@ $("#newDeck").on("click", function () {
 });
 
 $("#playCard").on("click", function () {
-    playACard();
+    if(rounds >= 0){
+        playACard();
+    }
+    else{
+        console.log("You need to shuffle and deal to play.");        
+    }
+})
+$("#wagerIncrease").on("click", function() {
+    increaseWager();
+})
+
+$("#wagerDecrease").on("click", function () {
+    decreaseWager();
 })
 
 
@@ -192,26 +228,31 @@ function drinkInfo() {
         url: drinkURL,
         method: "GET"
     }).then(function (response) {
-        
-        var drinkName = $("<h2>").append(response.drinks[0].strDrink);
+
+        var drinkName = $("<h3>").append(response.drinks[0].strDrink);
+        drinkName.addClass("drinkBackground")
         var drinkImg = $("<img>").attr("src", response.drinks[0].strDrinkThumb);
-        drinkImg.width(150);
+        drinkImg.width(200);
         var drinkIngredients = "";
         var measure = "";
         $("#drinkDisplay").empty();
+        $("#One").empty();
+        $("#Two").empty();
         $("#drinkDisplay").append(drinkName, drinkImg)
         for (let i = 1; i < 15; i++) {
             if (response.drinks[0]["strIngredient" + i] != null) {
-                drinkIngredients = $("<li>").append(response.drinks[0]["strIngredient" + i]);
-                $("#drinkDisplay").append(drinkIngredients)
+                drinkIngredients = $("<p>").append(response.drinks[0]["strIngredient" + i]);
+                drinkIngredients.addClass("drinkBackground");
+                $("#One").append(drinkIngredients);
             }
         }
-        
+
         for (let j = 1; j < 15; j++) {
             if (response.drinks[0]["strMeasure" + j] != null) {
                 measure = $("<p>").append(response.drinks[0]["strMeasure" + j]);
-                $("#drinkDisplay").append(measure);
-                
+                measure.addClass("drinkBackground");
+                $("#Two").append(measure);
+
             }
         }
     });
@@ -222,8 +263,8 @@ $("#searchDrink").on("click", function (event) {
     // event.preventDefault(); ONLY USEFUL FOR FORM TAG / SUBMIT BUTTON
     drinkChoice = $("#drinkChoice").val()
     drinkURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + drinkChoice;
-    
-    
+
+
     drinkInfo();
 });
 
@@ -238,24 +279,29 @@ function randomDrinkInfo() {
         method: "GET"
     }).then(function (response) {
 
-        var drinkName = $("<h2>").append(response.drinks[0].strDrink);
+        var drinkName = $("<h3>").append(response.drinks[0].strDrink);
+        drinkName.addClass("drinkBackground")
         var drinkImg = $("<img>").attr("src", response.drinks[0].strDrinkThumb);
-        drinkImg.width(150);
+        drinkImg.width(200);
         var drinkIngredients = "";
         var measure = "";
         $("#drinkDisplay").empty();
+        $("#One").empty();
+        $("#Two").empty();
         $("#drinkDisplay").append(drinkName, drinkImg)
         for (let i = 1; i < 15; i++) {
             if (response.drinks[0]["strIngredient" + i] != null) {
-                drinkIngredients = $("<li>").append(response.drinks[0]["strIngredient" + i]);
-                $("#drinkDisplay").append(drinkIngredients)
+                drinkIngredients = $("<p>").append(response.drinks[0]["strIngredient" + i]);
+                drinkIngredients.addClass("drinkBackground");
+                $("#One").append(drinkIngredients);
             }
         }
 
         for (let j = 1; j < 15; j++) {
             if (response.drinks[0]["strMeasure" + j] != null) {
                 measure = $("<p>").append(response.drinks[0]["strMeasure" + j]);
-                $("#drinkDisplay").append(measure);
+                measure.addClass("drinkBackground");
+                $("#Two").append(measure);
 
             }
         }
@@ -276,17 +322,17 @@ $("#randomDrink").on("click", function (event) {
 $(document).ready(function () {
     $('.modal').modal();
 
-  });
+});
 
-  //start new game
-  $("#newGame").on("click", function () {
+//start new game
+$("#newGame").on("click", function () {
     $("#mainContain").css("display", "block");
     $("#newGame").css("display", "none");
-  });
+});
 
-  //js to flip the cards
-  $("#card").flip({
+//js to flip the cards
+$("#card").flip({
     trigger: 'manual'
-  });
-  $("#card").flip('toggle');
+});
+$("#card").flip('toggle');
 
