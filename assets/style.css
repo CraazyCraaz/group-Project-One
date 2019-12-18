@@ -24,7 +24,7 @@
 
   #wagerWrapper {
     background-color: grey;
-    background-image: url(https://tse1.mm.bing.net/th?id=OIP.7S42dMVuu8GlGhqe8BBeUgHaFi&pid=Api&P=0&w=211&h=158); */
+    background-image: url(https://tse1.mm.bing.net/th?id=OIP.7S42dMVuu8GlGhqe8BBeUgHaFi&pid=Api&P=0&w=211&h=158); 
    
 }
 
@@ -94,8 +94,7 @@
       height: 40px;
       background: rgb(83, 83, 83);
       flex-direction: column;
-      color:
-       
+    
   }
 
   .modal {
